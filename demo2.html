@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Datepicker Example</title>
+
+<!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<style>
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  padding:40px;
+}
+
+input{
+  padding:6px;
+  border:1px solid #aaa;
+  margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h3>Earnings Statement Dates</h3>
+
+<label>Pay Date</label><br>
+<input type="text" class="date-picker"><br><br>
+
+<label>Pay Period Start</label><br>
+<input type="text" class="date-picker"><br><br>
+
+<label>Pay Period End</label><br>
+<input type="text" class="date-picker">
+
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+flatpickr(".date-picker", {
+  dateFormat: "m/d/Y"
+});
+</script>
+
+</body>
+</html>
