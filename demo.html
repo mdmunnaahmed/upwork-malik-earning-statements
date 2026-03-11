@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .stub_form_container {
+      width: 771px;
+      float: right;
+    }
+
+    .stub {
+      width: 769px;
+      border: 1px solid #969d9f;
+      font-family: "Open Sans", sans-serif;
+      font-size: 13px;
+      background-color: #fefefe;
+    }
+
+    .stub input[type="text"],
+    .stub select {
+      border: none;
+      background: 0 0;
+      text-align: left;
+      font-size: inherit;
+      font-family: inherit;
+      outline: 0;
+    }
+
+    .stub input[type="text"] {
+      width: 95%;
+      padding: 2px;
+    }
+
+    .stub input[type="text"]:focus {
+      border: 1px solid #ccc;
+      outline: 0;
+    }
+
+    .stub select {
+      width: auto;
+      padding: 0 2px;
+    }
+
+    .stub .black {
+      color: #000;
+    }
+
+    .stub .white {
+      color: #fff;
+    }
+
+    .stub .bold {
+      font-weight: 700;
+    }
+
+    .stub .right {
+      text-align: right !important;
+    }
+
+    .stub .border {
+      border: 1px solid #ccc !important;
+    }
+
+    .stub .size30 {
+      width: 30px !important;
+    }
+
+    .stub .size50 {
+      width: 50px !important;
+    }
+
+    .stub .size60 {
+      width: 60px !important;
+    }
+
+    .stub .size70 {
+      width: 70px !important;
+    }
+
+    .stub .size80 {
+      width: 80px !important;
+    }
+
+    .stub .size100 {
+      width: 100px !important;
+    }
+
+    .stub .center {
+      text-align: center !important;
+    }
+
+    .stub .bgwhite {
+      background-color: #fff !important;
+    }
+
+    .regular .row1,
+    .enhanced .row1 {
+      height: 40px;
+    }
+
+    .regular .row1.col1,
+    .enhanced .row1.col1 {
+      width: 514px;
+      background-color: #fff;
+      font-size: 14px;
+      padding-left: 10px;
+    }
+
+    .regular .row1.col2,
+    .enhanced .row1.col2 {
+      width: 235px;
+      background-image: url(../images/stub_head.jpg);
+      background-repeat: no-repeat;
+      background-color: #fff;
+      text-align: right;
+      color: #fff;
+      padding-right: 10px;
+      font-size: 18px;
+    }
+
+    .regular .row2,
+    .regular .row4,
+    .regular .row6,
+    .regular .row8,
+    .regular .row13 {
+      background-color: #dfdfdf;
+      height: 21px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .regular .row3,
+    .regular .row5,
+    .regular .row5_1,
+    .regular .row7,
+    .regular .row9,
+    .regular .row10,
+    .regular .row11,
+    .regular .row12,
+    .regular .row14 {
+      font-size: 13px;
+      height: 26px;
+    }
+
+    .regular .row2.col1,
+    .regular .row3.col1,
+    .regular .row4.col1,
+    .regular .row5.col1 {
+      width: 254px;
+      text-align: left;
+      padding-left: 10px;
+    }
+
+    .regular .row2.col2,
+    .regular .row3.col2 {
+      width: 494px;
+      text-align: left;
+      padding-left: 10px;
+      border-left: 1px solid #dfdfdf;
+    }
+
+    .regular .row4.col2,
+    .regular .row5.col2 {
+      width: 168px;
+      border-left: 1px solid #dfdfdf;
+      text-align: center;
+    }
+
+    .regular .row4.col3,
+    .regular .row4.col4,
+    .regular .row5.col3,
+    .regular .row5.col4 {
+      width: 167px;
+      border-left: 1px solid #dfdfdf;
+      text-align: center;
+    }
+
+    .regular .row4_1 {
+      background-color: #dfdfdf;
+      height: 21px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .regular .row4_1.col1 {
+      width: calc(769px - 20px);
+      text-align: left;
+      padding: 0 10px;
+    }
+
+    .regular .row5_1.col1 {
+      width: 769px;
+      padding: 0 10px;
+    }
+
+    .stub.regular .row5_1.col1 input[type="text"] {
+      width: 100%;
+      padding: 2px 0;
+    }
+
+    .regular .row6.col1,
+    .regular .row7.col1 {
+      width: 136px;
+      text-align: center;
+    }
+
+    .regular .row6.col2,
+    .regular .row7.col2 {
+      width: 296px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf;
+    }
+
+    .regular .row6.col3,
+    .regular .row7.col3 {
+      width: 129px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf;
+    }
+
+    .regular .row6.col4,
+    .regular .row7.col4 {
+      width: 94px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf;
+    }
+
+    .regular .row6.col5,
+    .regular .row7.col5 {
+      width: 110px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf;
+    }
+
+    .regular .row8.col1,
+    .regular .row9.col1 {
+      width: 76px;
+      text-align: left;
+      padding-left: 10px;
+    }
+
+    .regular .row8.col2,
+    .regular .row8.col3,
+    .regular .row9.col2,
+    .regular .row9.col3,
+    .regular .row10.col2,
+    .regular .row10.col3,
+    .regular .row11.col2,
+    .regular .row11.col3,
+    .regular .row12.col2,
+    .regular .row12.col3 {
+      width: 81px;
+      text-align: center;
+    }
+
+    .regular .row8.col4,
+    .regular .row9.col4,
+    .regular .row10.col4,
+    .regular .row11.col4,
+    .regular .row12.col4 {
+      width: 125px;
+      text-align: right;
+      padding-right: 20px;
+    }
+
+    .regular .row8.col5,
+    .regular .row9.col5,
+    .regular .row10.col5,
+    .regular .row11.col5,
+    .regular .row12.col5 {
+      width: 118px;
+      text-align: left;
+      border-left: 1px solid #dfdfdf;
+      padding-left: 10px;
+    }
+
+    .regular .row8.col6,
+    .regular .row9.col6,
+    .regular .row10.col6,
+    .regular .row11.col6,
+    .regular .row12.col6 {
+      width: 128px;
+      text-align: right;
+    }
+
+    .regular .row8.col7,
+    .regular .row9.col7,
+    .regular .row10.col7,
+    .regular .row11.col7,
+    .regular .row12.col7 {
+      width: 118px;
+      text-align: right;
+      padding-right: 10px;
+    }
+
+    .regular .row9 {
+      padding-top: 5px;
+    }
+
+    .regular .row12 {
+      padding-bottom: 5px;
+    }
+
+    .regular .row9.col1 {
+      vertical-align: top;
+    }
+
+    .regular .row9.col1 span {
+      display: block;
+      padding-top: 5px;
+      line-height: 1;
+    }
+
+    .regular .row10.col1,
+    .regular .row11.col1,
+    .regular .row12.col1 {
+      width: 76px;
+      text-align: left;
+      padding-left: 10px;
+    }
+
+    .regular .row13.col1,
+    .regular .row14.col1 {
+      width: 128px;
+      text-align: center;
+    }
+
+    .regular .row13.col2,
+    .regular .row14.col2 {
+      width: 130px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf;
+    }
+
+    .regular .row13.col3,
+    .regular .row14.col3 {
+      width: 128px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf;
+    }
+
+    .regular .row13.col4,
+    .regular .row13.col5,
+    .regular .row13.col6,
+    .regular .row14.col4,
+    .regular .row14.col5,
+    .regular .row14.col6 {
+      width: 126px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf;
+    }
+
+    .regular .row14 {
+      padding: 2px 0;
+    }
+
+    .psStubBoxes {
+      overflow: hidden;
+    }
+
+    .psStubBox {
+      float: left;
+      width: calc(237px - 2px);
+      border: 1px solid #0084b5;
+      margin: 10px;
+      background-color: #fff;
+    }
+
+    .psStubBox .psStubBoxHead {
+      background-color: #0084b5;
+      padding: 10px;
+    }
+
+    .psStubBox .psStubBoxHead h3 {
+      padding: 0;
+      margin: 0;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1.2rem;
+    }
+
+    .psStubFields ul {
+      display: inline-block;
+      padding: 0;
+      margin: 12px 0 0;
+      list-style: none;
+      width: 100%;
+    }
+
+    .psStubFields li {
+      padding: 5px 10px;
+    }
+
+    .psStubFields .psStubField {
+      position: relative;
+      width: 100%;
+      min-height: 30px;
+    }
+
+    .psStubFields .psStubField .psStubTitle {
+      position: absolute;
+      top: -12px;
+      left: 5px;
+      background-color: #fff;
+      padding: 0 5px;
+      font-weight: 500;
+      color: rgb(0 0 0 / .6);
+      font-size: .8rem;
+      text-transform: uppercase;
+    }
+
+    .psStubFields .psStubField input[type="text"] {
+      padding: 8px 5px;
+      width: 100%;
+      font-family: inherit;
+      font-size: .9rem;
+      outline: 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+    }
+
+    .stub_form_container .stub_btn {
+      display: block;
+      border-radius: 5px;
+      background-color: #0792c6;
+      border: 1px solid #0792c6;
+      outline: 0;
+      font-family: inherit;
+      font-size: 16px;
+      text-transform: uppercase;
+      color: #fff;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 10px 18px;
+      margin: 5px auto;
+      background: linear-gradient(top, #0792c6, #0084b5, #0792c6);
+    }
+
+    .stub_form_container .stub_btn:hover {
+      background-color: #0792c6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="stub_form_container">
+    <!--Stub-->
+    <div class="stub regular">
+      <table width="769" cellspacing="0" cellpadding="0" border="0">
+        <!--Row 1-->
+        <tbody>
+          <tr>
+            <td>
+              <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                  <tr>
+                    <td class="row1 col1">#<input type="text" name="chkNo" id="chkNo" value=""
+                        onblur="if (!window.__cfRLUnblockHandlers) return false; resetChkNo()" placeholder="Check No."
+                        class="black border size80"></td>
+                    <td class="row1 col2">EARNINGS STATEMENT</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!--Row 1-->
+
+          <!--Row 2,3-->
+          <tr>
+            <td>
+              <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                  <tr>
+                    <td class="row2 col1">COMPANY NAME</td>
+                    <td class="row2 col2">COMPANY ADDRESS</td>
+                  </tr>
+                  <tr>
+                    <td class="row3 col1">
+                      <input type="text" name="company_name" id="company_name" value="" placeholder="Your Company Name"
+                        class="black">
+                    </td>
+                    <td class="row3 col2">
+                      <input type="text" name="company_address" id="company_address" value=""
+                        placeholder="Your Company Address" class="black">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!--Row 2,3-->
+
+          <!--Row 4,5-->
+          <tr>
+            <td>
+              <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                  <tr>
+                    <td class="row4 col1">EMPLOYEE NAME</td>
+                    <td class="row4 col2">SSN</td>
+                    <td class="row4 col3">MARITAL STATUS</td>
+                    <td class="row4 col4">EMPLOYEE NO.</td>
+                  </tr>
+                  <tr>
+                    <td class="row5 col1">
+                      <input type="text" name="full_name" id="full_name" value="" placeholder="Employee Name"
+                        class="black">
+                    </td>
+                    <td class="row5 col2">xxx-xx-<input type="text" name="ssn" id="ssn" maxlength="4" value=""
+                        placeholder="Last 4 No." class="border black size70"></td>
+                    <td class="row5 col3">
+                      <select name="mStatus" id="mStatus"
+                        onchange="if (!window.__cfRLUnblockHandlers) return false; doCalc()"
+                        class="border black size100">
+                        <option selected="selected">Single</option>
+                        <option>Married</option>
+                      </select>
+                    </td>
+                    <td class="row5 col4"><input type="text" name="employee_number" id="employee_number" value="12"
+                        class="black size80 border center"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!--Row 4,5-->
+
+          <!--Added Row-->
+          <tr id="vis_full_address" style="display: none;">
+            <td>
+              <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                  <tr>
+                    <td class="row4_1 col1">EMPLOYEE ADDRESS</td>
+                  </tr>
+                  <tr>
+                    <td class="row5_1 col1"><input type="text" name="full_address" id="full_address" value=""
+                        placeholder="Employee Address" class="black"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!--Added Row-->
+
+          <!--Row 6,7-->
+          <tr>
+            <td>
+              <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                  <tr>
+                    <td class="row6 col1">PAY DATE</td>
+                    <td class="row6 col2">PAY PERIOD</td>
+                    <td class="row6 col3">PAY MODE</td>
+                    <td class="row6 col4">PAY TYPE</td>
+                    <td class="row6 col5">EXEMPTIONS</td>
+                  </tr>
+                  <tr>
+                    <td class="row7 col1"><input type="text" name="pay_date" id="pay_date" value="03/11/2026"
+                        class="size100 black center border datepicker hasDatepicker"
+                        onchange="if (!window.__cfRLUnblockHandlers) return false; resetDatesBy();"></td>
+
+                    <td class="row7 col2">
+                      <input type="text" name="pay_period_start" id="pay_period_start" value=""
+                        class="size100 black center border datepicker hasDatepicker"> - <input type="text"
+                        name="pay_period_end" id="pay_period_end" value=""
+                        class="size100 black center border datepicker hasDatepicker">
+                    </td>
+                    <td class="row7 col3"><select id="payment_cycle" name="payment_cycle" class="black border size80"
+                        onchange="if (!window.__cfRLUnblockHandlers) return false; setPayModeBy(this.value);">
+                        <option value="52" selected="selected">Weekly</option>
+                        <option value="26">Bi-Weekly</option>
+                        <option value="24">Bi-Monthly</option>
+                        <option value="12">Monthly</option>
+                        <option value="1">Annually</option>
+                      </select></td>
+                    <td class="row7 col4">
+                      <select name="jobType" id="jobType"
+                        onchange="if (!window.__cfRLUnblockHandlers) return false; inpType(this.value);"
+                        class="black border size80">
+                        <option value="1" selected="selected">Hourly</option>
+                        <option value="0">Salary</option>
+                      </select>
+                    </td>
+                    <td class="row7 col5">
+                      <select name="exemp" id="exemp"
+                        onchange="if (!window.__cfRLUnblockHandlers) return false; doCalc()"
+                        class="black border size60">
+                        <option value="0" selected="selected">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                      </select>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!--Row 6,7-->
+
+          <!--Row 8,9,10,11,12-->
+          <tr>
+            <td>
+              <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                  <tr>
+                    <td class="row8 col1">INCOME</td>
+                    <td class="row8 col2">RATE</td>
+                    <td class="row8 col3">HOUR</td>
+                    <td class="row8 col4">CURRENT TOTAL</td>
+                    <td class="row8 col5">DEDUCTIONS</td>
+                    <td class="row8 col6">CURRENT TOTAL</td>
+                    <td class="row8 col7">YTD TOTAL</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="4" class="row9 col1"><span>GROSS WAGES</span></td>
+                    <td class="row9 col2"><input type="text" id="rate" name="rate" value="15.00"
+                        class="border black size60 center"
+                        onblur="if (!window.__cfRLUnblockHandlers) return false; doCalc()"></td>
+                    <td class="row9 col3"><input type="text" id="hours" name="hours" value="40"
+                        class="border black size60 center"
+                        onblur="if (!window.__cfRLUnblockHandlers) return false; resetWHours()"></td>
+                    <td class="row9 col4"><input type="text" name="current_total" id="current_total" value="600.00"
+                        class="border black size60 right"
+                        onblur="if (!window.__cfRLUnblockHandlers) return false; resetWTotalPay()"></td>
+                    <td class="row9 col5">FICA-MEDICARE</td>
+                    <td class="row9 col6"><input type="text" name="fica_medicare_total" id="fica_medicare_total"
+                        value="" class="border black size60 right"></td>
+                    <td class="row9 col7"><input type="text" name="fica_medicare_ytd_total" id="fica_medicare_ytd_total"
+                        value="" class="border black size60 right"></td>
+                  </tr>
+                  <tr>
+                    <td class="row10 col2"></td>
+                    <td class="row10 col3"></td>
+                    <td class="row10 col4"></td>
+                    <td class="row10 col5">FICA-SOCIAL SEC.</td>
+                    <td class="row10 col6"><input type="text" name="fica_social_security_total"
+                        id="fica_social_security_total" value="" class="border black size60 right"></td>
+                    <td class="row10 col7"><input type="text" name="fica_social_security_ytd_total"
+                        id="fica_social_security_ytd_total" value="" class="border black size60 right"></td>
+                  </tr>
+                  <tr>
+                    <td class="row11 col2"></td>
+                    <td class="row11 col3"></td>
+                    <td class="row11 col4"></td>
+                    <td class="row11 col5">FEDERAL TAX</td>
+                    <td class="row11 col6"><input type="text" name="federal_tax_total" id="federal_tax_total" value=""
+                        class="border black size60 right"></td>
+                    <td class="row11 col7"><input type="text" name="federal_tax_ytd_total" id="federal_tax_ytd_total"
+                        value="" class="border black size60 right"></td>
+                  </tr>
+                  <tr>
+                    <td class="row12 col2"></td>
+                    <td class="row12 col3"></td>
+                    <td class="row12 col4"></td>
+                    <td class="row12 col5">STATE TAX</td>
+                    <td class="row12 col6"><input type="text" name="state_tax_total" id="state_tax_total" value=""
+                        class="border black size60 right"></td>
+                    <td class="row12 col7"><input type="text" name="state_tax_ytd_total" id="state_tax_ytd_total"
+                        value="" class="border black size60 right"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!--Row 8,9,10,11,12-->
+
+          <!--Row 13,14-->
+          <tr>
+            <td>
+              <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                  <tr>
+                    <td class="row13 col1">YTD GROSS</td>
+                    <td class="row13 col2">YTD DEDUCTIONS</td>
+                    <td class="row13 col3">YTD NET PAY</td>
+                    <td class="row13 col4">TOTAL</td>
+                    <td class="row13 col5">DEDUCTIONS</td>
+                    <td class="row13 col6">NET PAY</td>
+                  </tr>
+                  <tr>
+                    <td class="row14 col1"><input type="text" id="ytd_gross" value="" name="ytd_gross"
+                        class="border black size100 center"></td>
+                    <td class="row14 col2"><input type="text" id="ytd_deductions" value="" name="ytd_deductions"
+                        class="border black size100 center"></td>
+                    <td class="row14 col3"><input type="text" id="ytd_net_pay" value="" name="ytd_net_pay"
+                        class="border black size100 center"></td>
+                    <td class="row14 col4"><input type="text" id="total" value="" name="total"
+                        class="border black size100 center"></td>
+                    <td class="row14 col5"><input type="text" id="deductions" name="deductions" value=""
+                        class="border black size100 center"></td>
+                    <td class="row14 col6"><input type="text" id="net_pay" value="" name="net_pay"
+                        class="border black size100 center"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!--Row 13,14-->
+        </tbody>
+      </table>
+    </div>
+    <!--Stub-->
+
+    <!--Extras-->
+    <table cellspacing="0" cellpadding="0" border="0" align="center">
+      <tbody>
+        <tr>
+          <td height="20"></td>
+        </tr>
+        <tr>
+          <td>
+            <center><input type="submit" name="submit" id="view_stub" value="Preview Stub" class="stub_btn"
+                onclick="if (!window.__cfRLUnblockHandlers) return false; return validate_regularstub();"></center>
+          </td>
+        </tr>
+        <tr>
+          <td>By clicking 'Preview Stub' button you are agreeing to the <a
+              href="https://www.pstub.com/terms-and-conditions" target="_blank" style="text-decoration:underline;">Terms
+              and Conditions</a>.</td>
+        </tr>
+        <tr>
+          <td height="20"></td>
+        </tr>
+      </tbody>
+    </table>
+    <!--Extras-->
+
+    <!--Stub Boxes-->
+    <div class="psStubBoxes">
+      <div class="psStubBox" id="stub-2" style="display: none;">
+        <div class="psStubBoxHead">
+          <h3>Pay Stub 2</h3>
+        </div>
+        <div class="psStubFields">
+          <ul>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Check No.</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkNos[]" id="chkNos2"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Date</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_dates[]" id="pay_dates2"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Period</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_periods[]"
+                    id="pay_periods2" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle chkHoursTitle">No. Of Hours</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkHours[]" id="chkHours2"
+                    placeholder="" value="" onblur="if (!window.__cfRLUnblockHandlers) return false; doCalc();">
+                  <div id="chkHoursBuffer2" style="display:none;"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="psStubBox" id="stub-3" style="display: none;">
+        <div class="psStubBoxHead">
+          <h3>Pay Stub 3</h3>
+        </div>
+        <div class="psStubFields">
+          <ul>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Check No.</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkNos[]" id="chkNos3"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Date</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_dates[]" id="pay_dates3"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Period</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_periods[]"
+                    id="pay_periods3" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle chkHoursTitle">No. Of Hours</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkHours[]" id="chkHours3"
+                    placeholder="" value="" onblur="if (!window.__cfRLUnblockHandlers) return false; doCalc();">
+                  <div id="chkHoursBuffer3" style="display:none;"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="psStubBox" id="stub-4" style="display: none;">
+        <div class="psStubBoxHead">
+          <h3>Pay Stub 4</h3>
+        </div>
+        <div class="psStubFields">
+          <ul>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Check No.</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkNos[]" id="chkNos4"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Date</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_dates[]" id="pay_dates4"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Period</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_periods[]"
+                    id="pay_periods4" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle chkHoursTitle">No. Of Hours</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkHours[]" id="chkHours4"
+                    placeholder="" value="" onblur="if (!window.__cfRLUnblockHandlers) return false; doCalc();">
+                  <div id="chkHoursBuffer4" style="display:none;"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="psStubBox" id="stub-5" style="display: none;">
+        <div class="psStubBoxHead">
+          <h3>Pay Stub 5</h3>
+        </div>
+        <div class="psStubFields">
+          <ul>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Check No.</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkNos[]" id="chkNos5"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Date</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_dates[]" id="pay_dates5"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Period</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_periods[]"
+                    id="pay_periods5" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle chkHoursTitle">No. Of Hours</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkHours[]" id="chkHours5"
+                    placeholder="" value="" onblur="if (!window.__cfRLUnblockHandlers) return false; doCalc();">
+                  <div id="chkHoursBuffer5" style="display:none;"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="psStubBox" id="stub-6" style="display: none;">
+        <div class="psStubBoxHead">
+          <h3>Pay Stub 6</h3>
+        </div>
+        <div class="psStubFields">
+          <ul>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Check No.</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkNos[]" id="chkNos6"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Date</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_dates[]" id="pay_dates6"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Period</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_periods[]"
+                    id="pay_periods6" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle chkHoursTitle">No. Of Hours</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkHours[]" id="chkHours6"
+                    placeholder="" value="" onblur="if (!window.__cfRLUnblockHandlers) return false; doCalc();">
+                  <div id="chkHoursBuffer6" style="display:none;"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="psStubBox" id="stub-7" style="display: none;">
+        <div class="psStubBoxHead">
+          <h3>Pay Stub 7</h3>
+        </div>
+        <div class="psStubFields">
+          <ul>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Check No.</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkNos[]" id="chkNos7"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Date</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_dates[]" id="pay_dates7"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Period</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_periods[]"
+                    id="pay_periods7" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle chkHoursTitle">No. Of Hours</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkHours[]" id="chkHours7"
+                    placeholder="" value="" onblur="if (!window.__cfRLUnblockHandlers) return false; doCalc();">
+                  <div id="chkHoursBuffer7" style="display:none;"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="psStubBox" id="stub-8" style="display: none;">
+        <div class="psStubBoxHead">
+          <h3>Pay Stub 8</h3>
+        </div>
+        <div class="psStubFields">
+          <ul>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Check No.</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkNos[]" id="chkNos8"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Date</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_dates[]" id="pay_dates8"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Period</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_periods[]"
+                    id="pay_periods8" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle chkHoursTitle">No. Of Hours</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkHours[]" id="chkHours8"
+                    placeholder="" value="" onblur="if (!window.__cfRLUnblockHandlers) return false; doCalc();">
+                  <div id="chkHoursBuffer8" style="display:none;"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="psStubBox" id="stub-9" style="display: none;">
+        <div class="psStubBoxHead">
+          <h3>Pay Stub 9</h3>
+        </div>
+        <div class="psStubFields">
+          <ul>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Check No.</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkNos[]" id="chkNos9"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Date</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_dates[]" id="pay_dates9"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Period</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_periods[]"
+                    id="pay_periods9" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle chkHoursTitle">No. Of Hours</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkHours[]" id="chkHours9"
+                    placeholder="" value="" onblur="if (!window.__cfRLUnblockHandlers) return false; doCalc();">
+                  <div id="chkHoursBuffer9" style="display:none;"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="psStubBox" id="stub-10" style="display: none;">
+        <div class="psStubBoxHead">
+          <h3>Pay Stub 10</h3>
+        </div>
+        <div class="psStubFields">
+          <ul>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Check No.</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkNos[]" id="chkNos10"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Date</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_dates[]"
+                    id="pay_dates10" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Period</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_periods[]"
+                    id="pay_periods10" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle chkHoursTitle">No. Of Hours</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkHours[]" id="chkHours10"
+                    placeholder="" value="" onblur="if (!window.__cfRLUnblockHandlers) return false; doCalc();">
+                  <div id="chkHoursBuffer10" style="display:none;"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="psStubBox" id="stub-11" style="display: none;">
+        <div class="psStubBoxHead">
+          <h3>Pay Stub 11</h3>
+        </div>
+        <div class="psStubFields">
+          <ul>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Check No.</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkNos[]" id="chkNos11"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Date</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_dates[]"
+                    id="pay_dates11" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Period</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_periods[]"
+                    id="pay_periods11" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle chkHoursTitle">No. Of Hours</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkHours[]" id="chkHours11"
+                    placeholder="" value="" onblur="if (!window.__cfRLUnblockHandlers) return false; doCalc();">
+                  <div id="chkHoursBuffer11" style="display:none;"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="psStubBox" id="stub-12" style="display: none;">
+        <div class="psStubBoxHead">
+          <h3>Pay Stub 12</h3>
+        </div>
+        <div class="psStubFields">
+          <ul>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Check No.</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkNos[]" id="chkNos12"
+                    placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Date</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_dates[]"
+                    id="pay_dates12" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle">Pay Period</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="pay_periods[]"
+                    id="pay_periods12" placeholder="" value=""></div>
+              </div>
+            </li>
+            <li>
+              <div class="psStubField">
+                <div class="psStubTitle chkHoursTitle">No. Of Hours</div>
+                <div calss="psStubField"><input type="text" class="input-block-level" name="chkHours[]" id="chkHours12"
+                    placeholder="" value="" onblur="if (!window.__cfRLUnblockHandlers) return false; doCalc();">
+                  <div id="chkHoursBuffer12" style="display:none;"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--Stub Boxes-->
+
+    <!--Extras-->
+    <div class="extSub" id="extSub" style="display: none;">
+      <table cellspacing="0" cellpadding="0" border="0" align="center">
+        <tbody>
+          <tr>
+            <td height="20"></td>
+          </tr>
+          <tr>
+            <td>
+              <center><input type="submit" name="submit" id="view_stub" value="Preview Stub" class="stub_btn"
+                  onclick="if (!window.__cfRLUnblockHandlers) return false; return validate_regularstub();"></center>
+            </td>
+          </tr>
+          <tr>
+            <td>By clicking 'Preview Stub' button you are agreeing to the <a
+                href="https://www.pstub.com/terms-and-conditions" target="_blank"
+                style="text-decoration:underline;">Terms and Conditions</a>.</td>
+          </tr>
+          <tr>
+            <td height="20"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--Extras-->
+
+  </div>
+
+</body>
+
+</html>

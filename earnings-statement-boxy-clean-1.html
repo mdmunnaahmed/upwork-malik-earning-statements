@@ -1,0 +1,2347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Employee Earnings Statement">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none';
+             style-src 'unsafe-inline' https://fonts.googleapis.com;
+             font-src https://fonts.gstatic.com;
+             script-src 'nonce-pAy5tUb2026xSS';
+             img-src data: blob:;
+             object-src 'none';
+             base-uri 'none';
+             form-action 'none';
+             frame-ancestors 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta name="referrer" content="no-referrer">
+  <title>Earnings Statement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --ff: Arial, Helvetica, sans-serif;
+      --border: #c0c0c0;
+      --lrow-bg: #d8d8d8;
+      --lrow-border: #b8b8b8;
+      --inp-border: #aaa;
+      --text-dark: #111;
+      --text-mid: #555;
+      --placeholder: #999;
+      --blue: #4a7fa0;
+      --blue-glow: rgba(74, 127, 160, .2);
+      --dark-hdr: #4a4a4a;
+    }
+
+    input,
+    select {
+      font-family: var(--ff);
+      font-size: 13px;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+
+    input[type="number"] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+
+    input[type="date"] {
+      color-scheme: light;
+    }
+
+    body {
+      font-family: var(--ff);
+      font-size: 13px;
+      padding: 30px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .steps h2,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 400
+    }
+
+    .stub td,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ul {
+      margin: 0;
+      padding: 0;
+      font-weight: 400
+    }
+
+    .deposit_slip a,
+    .deposit_slip a:hover,
+    .header .nav li a,
+    a {
+      text-decoration: none
+    }
+
+    .banner button,
+    .header .nav #selected,
+    .header .nav li a:hover {
+      background-color: #0792c6;
+      color: #fff
+    }
+
+    .footer .shortnav li span:hover,
+    .review .edit-control,
+    .stub_control a,
+    a:hover {
+      text-decoration: underline
+    }
+
+    .bg-holder,
+    .bg_watermark {
+      background-image: url(../images/watermark.png)
+    }
+
+    .banner .banner_stub_price,
+    .bg-holder,
+    .bg_watermark {
+      background-repeat: no-repeat
+    }
+
+    .container,
+    .cookie_table .ck_row,
+    .footer .container,
+    .header .nav,
+    .holder,
+    .psStubBoxes,
+    .stubboxes {
+      overflow: hidden
+    }
+
+    body {
+      font-size: 14px;
+      background-color: #f7f7f7
+    }
+
+    .hp_content p,
+    table,
+    td,
+    tr {
+      font-size: inherit;
+      width: 100%
+    }
+
+    a {
+      color: inherit
+    }
+
+    .wrapper {
+      width: 100%;
+      min-width: 1320px
+    }
+
+    img {
+      vertical-align: middle
+    }
+
+    input,
+    select {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box
+    }
+
+    a,
+    button,
+    img,
+    input {
+      outline: 0
+    }
+
+    h1 {
+      font-size: 30px
+    }
+
+    h2 {
+      font-size: 26px
+    }
+
+    h3 {
+      font-size: 22px
+    }
+
+    p {
+      margin: 0;
+      padding: 0 0 10px
+    }
+
+    .container {
+      width: 1040px;
+      margin: 0 auto
+    }
+
+    .header {
+      width: 100%;
+      background-color: #f1f1f1
+    }
+
+    .header .container {
+      height: 100px
+    }
+
+    .header .logo {
+      float: left;
+      margin-top: 13px
+    }
+
+    .header .nav {
+      float: right;
+      margin-top: 31px
+    }
+
+    .header .nav ul {
+      list-style: none
+    }
+
+    .header .nav li {
+      display: block;
+      float: left;
+      margin-left: 3px
+    }
+
+    .header .nav li a {
+      display: block;
+      padding: 10px;
+      background-color: #f1f1f1;
+      border-radius: 2px;
+      text-transform: uppercase
+    }
+
+    .banner {
+      border: 1px solid #cacaca;
+      border-right: none;
+      border-left: none
+    }
+
+    .banner .container {
+      padding: 40px 0
+    }
+
+    .banner .container h1 {
+      margin: 0 0 20px;
+      padding: 0;
+      font-weight: 400;
+      text-align: center;
+      font-style: italic;
+      font-size: 30px
+    }
+
+    .banner .container h1 span {
+      color: #0792c6
+    }
+
+    .banner .banner_stub {
+      margin: 0 auto 10px;
+      display: table;
+      box-shadow: 0 0 8px 0 #5f6160;
+      position: relative
+    }
+
+    .banner .banner_stub_price {
+      display: block;
+      width: 100px;
+      height: 99px;
+      position: absolute;
+      top: -40px;
+      left: -40px;
+      background-image: url(../images/priceTag.png);
+      text-align: center
+    }
+
+    .banner .banner_stub_price span {
+      margin-top: 20px;
+      display: block;
+      font-size: 18px;
+      line-height: 1;
+      color: #fff
+    }
+
+    .banner .banner_stub_price strong {
+      font-size: 24px
+    }
+
+    .banner button {
+      display: table;
+      width: auto;
+      margin: 30px auto 0;
+      background: -webkit-linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      background: -o-linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      background: -moz-linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      background: linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      font-family: inherit;
+      border: 1px solid #0792c6;
+      padding: 15px 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer
+    }
+
+    .stub input[type="text"],
+    .stub select {
+      border: none;
+      background: 0 0;
+      text-align: left
+    }
+
+    .banner button:hover {
+      background: -webkit-linear-gradient(top, #0084b5, #0792c6, #0084b5);
+      background: -o-linear-gradient(top, #0084b5, #0792c6, #0084b5);
+      background: -moz-linear-gradient(top, #0084b5, #0792c6, #0084b5);
+      background: linear-gradient(top, #0084b5, #0792c6, #0084b5)
+    }
+
+    .steps {
+      text-align: center;
+      padding: 20px 0
+    }
+
+    .steps h2 {
+      font-size: 26px;
+      margin: 0;
+      padding: 0 0 10px
+    }
+
+    .stub input[type="text"],
+    .stub select {
+      font-size: inherit;
+      font-family: inherit;
+      outline: 0;
+      height: 24px;
+    }
+
+    .footer {
+      border-top: 1px solid #cacaca;
+      background-color: #cacaca
+    }
+
+    .footer .container {
+      height: 40px;
+      line-height: 40px;
+      font-size: 13px
+    }
+
+    .footer .footermsg {
+      float: left
+    }
+
+    .footer .shortnav {
+      float: right
+    }
+
+    .footer .shortnav ul {
+      float: left;
+      list-style: none
+    }
+
+    .footer .shortnav li {
+      float: left;
+      margin-left: 20px
+    }
+
+    .footer .shortnav li span {
+      cursor: pointer
+    }
+
+    .content .container {
+      width: 1084px;
+      margin: 20px auto;
+      padding: 20px;
+      min-height: 500px
+    }
+
+    .content ul {
+      padding-left: 20px
+    }
+
+    .content li {
+      margin-bottom: 10px
+    }
+
+    .stub_form_container {
+      width: 780px;
+      float: right
+    }
+
+    .enhanced .row1,
+    .regular .row1 {
+      height: 40px
+    }
+
+    .enhanced .row1.col1,
+    .regular .row1.col1 {
+      width: 514px;
+      background-color: #fff;
+      font-size: 14px;
+      padding-left: 10px
+    }
+
+    .enhanced .row1.col2,
+    .regular .row1.col2 {
+      width: 255px;
+      background-image: url('https://www.pstub.com/images/stub_head.jpg');
+      background-repeat: no-repeat;
+      background-color: #fff;
+      text-align: right;
+      color: #fff;
+      padding-right: 10px;
+      font-size: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .enhanced .row1.col2::before,
+    .regular .row1.col2::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #969d9f 0%, #646665 100%);
+      clip-path: polygon(0px 0%, 100% 0%, 100% 100%, 18% 100%);
+      right: -1px;
+      z-index: -1;
+    }
+
+    .enhanced .row10,
+    .enhanced .row2,
+    .enhanced .row4,
+    .enhanced .row8,
+    .regular .row13,
+    .regular .row2,
+    .regular .row4,
+    .regular .row6,
+    .regular .row8 {
+      background-color: #dfdfdf;
+      height: 26px;
+      font-size: 13px;
+      font-weight: 700
+    }
+
+    .enhanced .row11,
+    .enhanced .row12,
+    .enhanced .row13,
+    .enhanced .row14,
+    .enhanced .row15,
+    .enhanced .row16,
+    .enhanced .row17,
+    .enhanced .row18,
+    .enhanced .row3,
+    .enhanced .row5,
+    .regular .row10,
+    .regular .row11,
+    .regular .row12,
+    .regular .row14,
+    .regular .row3,
+    .regular .row5,
+    .regular .row5_1,
+    .regular .row7,
+    .regular .row9 {
+      font-size: 13px;
+      height: 26px
+    }
+
+    .enhanced .row2.col1,
+    .enhanced .row3.col1,
+    .enhanced .row4.col1,
+    .enhanced .row5.col1,
+    .regular .row2.col1,
+    .regular .row3.col1,
+    .regular .row4.col1,
+    .regular .row5.col1 {
+      width: 254px;
+      text-align: left;
+      padding-left: 10px
+    }
+
+    .regular .row4_1 {
+      background-color: #dfdfdf;
+      height: 21px;
+      font-size: 13px;
+      font-weight: 700
+    }
+
+    .regular .row4_1.col1 {
+      width: calc(769px - 20px);
+      text-align: left;
+      padding: 0 10px
+    }
+
+    .regular .row5_1.col1 {
+      width: 769px;
+      padding: 0 10px
+    }
+
+    .stub.regular .row5_1.col1 input[type="text"] {
+      width: 100%;
+      padding: 2px 0
+    }
+
+    .enhanced .row2.col2,
+    .enhanced .row3.col2,
+    .regular .row2.col2,
+    .regular .row3.col2 {
+      width: 494px;
+      text-align: left;
+      padding-left: 10px;
+      border-left: 1px solid #dfdfdf
+    }
+
+    .enhanced .row4.col2,
+    .enhanced .row5.col2,
+    .regular .row4.col2,
+    .regular .row5.col2 {
+      width: 168px;
+      border-left: 1px solid #dfdfdf;
+      text-align: center
+    }
+
+    .enhanced .row4.col3,
+    .enhanced .row4.col4,
+    .enhanced .row5.col3,
+    .enhanced .row5.col4,
+    .regular .row4.col3,
+    .regular .row4.col4,
+    .regular .row5.col3,
+    .regular .row5.col4 {
+      width: 167px;
+      border-left: 1px solid #dfdfdf;
+      text-align: center
+    }
+
+    .enhanced .row8.col1,
+    .enhanced .row9.col1,
+    .regular .row6.col1,
+    .regular .row7.col1 {
+      width: 136px;
+      text-align: center
+    }
+
+    .enhanced .row8.col2,
+    .enhanced .row9.col2,
+    .regular .row6.col2,
+    .regular .row7.col2 {
+      width: 296px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf
+    }
+
+    .regular .row6.col3,
+    .regular .row7.col3 {
+      width: 129px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf
+    }
+
+    .regular .row6.col4,
+    .regular .row7.col4 {
+      width: 94px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf
+    }
+
+    .regular .row6.col5,
+    .regular .row7.col5 {
+      width: 110px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf
+    }
+
+    .regular .row10.col1,
+    .regular .row11.col1,
+    .regular .row12.col1,
+    .regular .row8.col1,
+    .regular .row9.col1 {
+      width: 76px;
+      text-align: left;
+      padding-left: 10px
+    }
+
+    .regular .row10.col2,
+    .regular .row10.col3,
+    .regular .row11.col2,
+    .regular .row11.col3,
+    .regular .row12.col2,
+    .regular .row12.col3,
+    .regular .row8.col2,
+    .regular .row8.col3,
+    .regular .row9.col2,
+    .regular .row9.col3 {
+      width: 81px;
+      text-align: center
+    }
+
+    .regular .row10.col4,
+    .regular .row11.col4,
+    .regular .row12.col4,
+    .regular .row8.col4,
+    .regular .row9.col4 {
+      width: 125px;
+      text-align: right;
+      padding-right: 20px
+    }
+
+    .regular .row10.col5,
+    .regular .row11.col5,
+    .regular .row12.col5,
+    .regular .row8.col5,
+    .regular .row9.col5 {
+      width: 120px;
+      text-align: left;
+      border-left: 1px solid #dfdfdf;
+      padding-left: 10px
+    }
+
+    .regular .row10.col6,
+    .regular .row11.col6,
+    .regular .row12.col6,
+    .regular .row8.col6,
+    .regular .row9.col6 {
+      width: 128px;
+      text-align: right
+    }
+
+    .regular .row10.col7,
+    .regular .row11.col7,
+    .regular .row12.col7,
+    .regular .row8.col7,
+    .regular .row9.col7 {
+      width: 115px;
+      text-align: right;
+      padding-right: 10px
+    }
+
+    .regular .row9 {
+      padding-top: 5px
+    }
+
+    .regular .row12 {
+      padding-bottom: 5px
+    }
+
+    .regular .row9.col1 {
+      vertical-align: top
+    }
+
+    .regular .row9.col1 span {
+      display: block;
+      padding-top: 5px;
+      line-height: 1
+    }
+
+    .regular .row14 {
+      padding: 2px 0
+    }
+
+    .regular .row13.col1,
+    .regular .row14.col1 {
+      width: 128px;
+      text-align: center
+    }
+
+    .regular .row13.col2,
+    .regular .row14.col2 {
+      width: 130px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf
+    }
+
+    .regular .row13.col3,
+    .regular .row14.col3 {
+      width: 128px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf
+    }
+
+    .regular .row13.col4,
+    .regular .row13.col5,
+    .regular .row13.col6,
+    .regular .row14.col4,
+    .regular .row14.col5,
+    .regular .row14.col6 {
+      width: 126px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf
+    }
+
+    .stub input[type="text"] {
+      width: 95%;
+      padding: 2px
+    }
+
+    .stub input[type="text"]:focus {
+      border: 1px solid #ccc;
+      outline: 0
+    }
+
+    .stub select {
+      width: auto;
+      padding: 0 2px
+    }
+
+    .cookie_table .ck_row_head .ck_col,
+    .stub .black {
+      color: #000
+    }
+
+    .stub .white {
+      color: #fff
+    }
+
+    .stub .bold {
+      font-weight: 700
+    }
+
+    .stub .fsize15 {
+      font-size: 15px
+    }
+
+    .stub .right {
+      text-align: right !important
+    }
+
+    .stub .border {
+      border: 1px solid #ccc !important
+    }
+
+    .stub .size30 {
+      width: 30px !important
+    }
+
+    .stub .size50 {
+      width: 50px !important
+    }
+
+    .stub .size60 {
+      width: 60px !important
+    }
+
+    .stub .size70 {
+      width: 70px !important
+    }
+
+    .stub .size80 {
+      width: 80px !important
+    }
+
+    .stub .size100 {
+      width: 100px !important
+    }
+
+    .stub .center {
+      text-align: center !important
+    }
+
+    .stub .bgwhite {
+      background-color: #fff !important
+    }
+
+    .review .edit-control a,
+    .stub_container .stub_btn:hover {
+      background-color: #0792c6
+    }
+
+    .stub_control {
+      width: 250px;
+      float: left
+    }
+
+    .stub_control td {
+      height: 25px;
+      font-weight: 700
+    }
+
+    .stub_control input[type="text"],
+    .stub_control select {
+      font-family: inherit;
+      font-size: inherit;
+      border: 1px solid #ccc;
+      padding: 5px;
+      max-width: 230px;
+      outline: 0;
+      margin-bottom: 5px
+    }
+
+    .stub_control input[type="text"] {
+      width: 220px
+    }
+
+    .stub_control td span {
+      color: red;
+      /* font-family: arial; */
+      font-size: 18px
+    }
+
+    .stub_control a {
+      color: #22a5ff
+    }
+
+    .stub_container h1,
+    .stub_container h2,
+    .stub_container h3,
+    .stub_container h4,
+    .stub_container h5,
+    .stub_container h6 {
+      font-weight: 500;
+      padding: 0 0 10px;
+      margin: 0
+    }
+
+    .stub_container p {
+      padding: 0 0 10px;
+      margin: 0
+    }
+
+    .stub_container .stub_btn {
+      display: block;
+      border-radius: 5px;
+      background-color: #0792c6;
+      border: 1px solid #0792c6;
+      outline: 0;
+      font-family: inherit;
+      font-size: 16px;
+      text-transform: uppercase;
+      color: #fff;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 10px 18px;
+      margin: 5px auto;
+      background: -webkit-linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      background: -o-linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      background: -moz-linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      background: linear-gradient(top, #0792c6, #0084b5, #0792c6)
+    }
+
+    .enhanced .row11,
+    .enhanced .row17 {
+      padding-top: 10px
+    }
+
+    .stubboxes .stubbox {
+      float: left;
+      width: 170px;
+      margin: 10px
+    }
+
+    .enhanced .row6,
+    .enhanced .row7 {
+      width: 759px;
+      font-size: 13px;
+      padding-left: 10px
+    }
+
+    .stubboxes .controls {
+      border: 1px solid #969d9f;
+      padding: 10px;
+      background-color: #e7e7e7;
+      border-radius: 2px
+    }
+
+    .enhanced .row17,
+    .enhanced .row18,
+    .enhanced .row6 {
+      background-color: #dfdfdf
+    }
+
+    .stubboxes .controls input[type="text"] {
+      border: 1px solid #ccc;
+      background-color: #fff;
+      margin: 2px 0;
+      padding: 5px;
+      width: 100%
+    }
+
+    .estub_form_container {
+      width: 773px;
+      float: right
+    }
+
+    .stub {
+      width: 769px;
+      border: 1px solid #969d9f;
+      font-family: "Open Sans", sans-serif;
+      font-size: 13px;
+      background-color: #fefefe
+    }
+
+    .enhanced .row6 {
+      height: 21px;
+      font-weight: 700
+    }
+
+    .enhanced .row7 {
+      height: 26px
+    }
+
+    .enhanced .row10,
+    .enhanced .row11,
+    .enhanced .row12,
+    .enhanced .row13,
+    .enhanced .row14,
+    .enhanced .row15,
+    .enhanced .row16,
+    .enhanced .row9 {
+      font-size: 13px;
+      height: 26px !important
+    }
+
+    .enhanced .row8.col3,
+    .enhanced .row9.col3 {
+      width: 184px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf
+    }
+
+    .enhanced .row8.col4,
+    .enhanced .row9.col4 {
+      width: 150px;
+      text-align: center;
+      border-left: 1px solid #dfdfdf
+    }
+
+    .enhanced .row10.col1,
+    .enhanced .row11.col1,
+    .enhanced .row12.col1,
+    .enhanced .row13.col1,
+    .enhanced .row14.col1,
+    .enhanced .row15.col1,
+    .enhanced .row16.col1,
+    .enhanced .row17.col1,
+    .enhanced .row18.col1 {
+      width: 77px;
+      padding-left: 10px
+    }
+
+    .enhanced .row10.col2,
+    .enhanced .row11.col2,
+    .enhanced .row12.col2,
+    .enhanced .row13.col2,
+    .enhanced .row14.col2,
+    .enhanced .row15.col2,
+    .enhanced .row16.col2,
+    .enhanced .row17.col2,
+    .enhanced .row18.col2 {
+      width: 61px;
+      text-align: right
+    }
+
+    .enhanced .row10.col3,
+    .enhanced .row11.col3,
+    .enhanced .row12.col3,
+    .enhanced .row13.col3,
+    .enhanced .row14.col3,
+    .enhanced .row15.col3,
+    .enhanced .row16.col3,
+    .enhanced .row17.col3,
+    .enhanced .row18.col3 {
+      width: 62px;
+      text-align: right
+    }
+
+    .enhanced .row10.col4,
+    .enhanced .row11.col4,
+    .enhanced .row12.col4,
+    .enhanced .row13.col4,
+    .enhanced .row14.col4,
+    .enhanced .row15.col4,
+    .enhanced .row16.col4,
+    .enhanced .row17.col4,
+    .enhanced .row18.col4 {
+      width: 77px;
+      text-align: right
+    }
+
+    .enhanced .row10.col5,
+    .enhanced .row11.col5,
+    .enhanced .row12.col5,
+    .enhanced .row13.col5,
+    .enhanced .row14.col5,
+    .enhanced .row15.col5,
+    .enhanced .row16.col5,
+    .enhanced .row17.col5,
+    .enhanced .row18.col5 {
+      width: 77px;
+      text-align: right;
+      padding-right: 20px
+    }
+
+    .enhanced .row10.col6,
+    .enhanced .row11.col6,
+    .enhanced .row12.col6,
+    .enhanced .row13.col6,
+    .enhanced .row14.col6,
+    .enhanced .row15.col6,
+    .enhanced .row16.col6,
+    .enhanced .row17.col6,
+    .enhanced .row18.col6 {
+      width: 148px;
+      padding-left: 10px;
+      border-left: 1px solid #dfdfdf
+    }
+
+    .enhanced .row10.col7,
+    .enhanced .row10.col8,
+    .enhanced .row11.col7,
+    .enhanced .row11.col8,
+    .enhanced .row12.col7,
+    .enhanced .row12.col8,
+    .enhanced .row13.col7,
+    .enhanced .row13.col8,
+    .enhanced .row14.col7,
+    .enhanced .row14.col8,
+    .enhanced .row15.col7,
+    .enhanced .row15.col8,
+    .enhanced .row16.col7,
+    .enhanced .row16.col8,
+    .enhanced .row17.col7,
+    .enhanced .row17.col8,
+    .enhanced .row18.col7,
+    .enhanced .row18.col8 {
+      width: 103px;
+      text-align: right;
+      padding-right: 10px
+    }
+
+    .enhanced .row16 {
+      padding-bottom: 10px
+    }
+
+    .enhanced .row17 {
+      padding-bottom: 2px
+    }
+
+    .enhanced .row18 {
+      padding-top: 2px;
+      padding-bottom: 10px
+    }
+
+    .margincenter {
+      margin: 0 auto !important;
+      float: none !important
+    }
+
+    .review h2 {
+      margin: 0;
+      padding: 20px 0 10px;
+      float: left
+    }
+
+    .review .edit-control {
+      float: right;
+      color: #22a5ff;
+      padding: 10px 0 10px 10px
+    }
+
+    .holder {
+      width: auto;
+      clear: both;
+      display: block;
+      position: relative
+    }
+
+    .bg-holder,
+    .hold-bg {
+      width: 100%;
+      height: 100%
+    }
+
+    .bg-holder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-position: bottom 80px center
+    }
+
+    .bg_watermark {
+      background-position: center center
+    }
+
+    .footer {
+      position: relative
+    }
+
+    .comodo_seal {
+      position: absolute;
+      left: 15px;
+      bottom: 50px
+    }
+
+    .comodo_seal img {
+      max-width: 110px;
+      height: auto
+    }
+
+    .ssl_protect {
+      position: absolute;
+      bottom: 50px;
+      right: 15px
+    }
+
+    .ssl_protect img {
+      max-width: 62px;
+      height: auto
+    }
+
+    .banner .container .main-h2-head {
+      margin: 0 0 30px;
+      padding: 0;
+      font-size: 20px;
+      text-align: center;
+      font-style: italic
+    }
+
+    .banner .banner_stub_spof {
+      position: absolute;
+      top: 43px;
+      left: -70px
+    }
+
+    .header .logo .mobilemenu {
+      display: none;
+      cursor: pointer
+    }
+
+    .hp_content {
+      font-style: italic;
+      font-size: 1rem
+    }
+
+    .hp_content h2,
+    .hp_content h3 {
+      margin: 0 0 10px;
+      padding: 0;
+      font-weight: 500
+    }
+
+    .hp_content h2 {
+      font-size: 1.4rem;
+      border-bottom: 1px solid #000;
+      padding: 10px 0;
+      display: inline-block
+    }
+
+    .hp_content h3 {
+      font-size: 1.2rem;
+      color: #cb1219
+    }
+
+    .hp_content li {
+      margin-bottom: 10px;
+      font-size: inherit
+    }
+
+    .hp_content ol,
+    .hp_content ul {
+      margin-left: 20px;
+      padding-left: 20px;
+      font-size: inherit
+    }
+
+    .hp_content li strong {
+      font-weight: 500
+    }
+
+    .contactus_form {
+      margin-bottom: 60px
+    }
+
+    .estub_form_container,
+    .stub_form_container {
+      padding-top: 30px
+    }
+
+    .review .edit-control a {
+      display: block;
+      width: auto;
+      padding: 8px 10px;
+      margin: 0 auto;
+      background: -webkit-linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      background: -o-linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      background: -moz-linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      background: linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      font-family: inherit;
+      font-size: 16px;
+      color: #fff;
+      border: 1px solid #0084b5;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none
+    }
+
+    .review .edit-control a svg {
+      vertical-align: middle;
+      width: 18px;
+      height: 18px;
+      margin-top: -3px;
+      margin-right: 3px;
+      color: #022c3b;
+      background-color: #fff;
+      padding: 3px;
+      border-radius: 50%;
+      border: 1px solid #0084b5
+    }
+
+    .review .edit-control a:hover {
+      text-decoration: none;
+      background: -webkit-linear-gradient(top, #0084b5, #0792c6, #0084b5);
+      background: -o-linear-gradient(top, #0084b5, #0792c6, #0084b5);
+      background: -moz-linear-gradient(top, #0084b5, #0792c6, #0084b5);
+      background: linear-gradient(top, #0084b5, #0792c6, #0084b5)
+    }
+
+    .review .edit-control a:hover svg {
+      background-color: #cb1219;
+      color: #fff;
+      border-color: #0792c6;
+      background: -webkit-linear-gradient(left, #044963, #05668b, #044963);
+      background: -o-linear-gradient(left, #044963, #05668b, #044963);
+      background: -moz-linear-gradient(left, #044963, #05668b, #044963);
+      background: linear-gradient(left, #044963, #05668b, #044963)
+    }
+
+    .deposit_slip img {
+      max-width: 672px;
+      height: auto;
+      margin: 10px
+    }
+
+    .deposit_slip {
+      text-align: center;
+      display: table;
+      box-shadow: 0 0 8px 0 #5f6160;
+      margin: 15px auto;
+      position: relative;
+      background-color: #fff
+    }
+
+    .hold,
+    .hold-bg,
+    .hold-bg svg {
+      position: fixed
+    }
+
+    .deposit_slip .deposit_slip_head {
+      position: relative;
+      top: 0;
+      left: 0;
+      color: #fff;
+      font-size: 1.6rem;
+      font-weight: 400;
+      font-style: italic;
+      background-color: rgb(0 0 0 / .6);
+      padding: 10px 0
+    }
+
+    .deposit_slip .deposit_slip_head svg {
+      vertical-align: middle;
+      width: 32px;
+      height: 32px;
+      rotate: 20deg;
+      margin-top: -5px
+    }
+
+    .hold-bg {
+      top: 0;
+      left: 0;
+      z-index: 999999;
+      background-color: rgb(255 255 255 / .7);
+      text-align: center;
+      display: none
+    }
+
+    .hold,
+    .hold-bg svg,
+    .psStubFields ul {
+      display: inline-block
+    }
+
+    .hold {
+      left: 50%;
+      top: 50%;
+      text-indent: -9999em;
+      border-top: 15px solid rgb(0 0 0 / .2);
+      border-right: 15px solid rgb(0 0 0 / .2);
+      border-bottom: 15px solid #0792c6;
+      border-left: 15px solid rgb(0 0 0 / .2);
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-animation: 1.1s linear infinite loadicon;
+      animation: 1.1s linear infinite loadicon;
+      left: calc(50% - 39px);
+      top: calc(50% - 39px)
+    }
+
+    .hold,
+    .hold:after {
+      border-radius: 50%;
+      width: 48px;
+      height: 48px
+    }
+
+    .hold-bg img {
+      position: fixed;
+      left: calc(50% - 15px);
+      top: calc(50% - 15px);
+      width: 30px;
+      height: 30px;
+      color: #0792c6
+    }
+
+    @-webkit-keyframes loadicon {
+      0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+      }
+    }
+
+    @keyframes loadicon {
+      0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+      }
+    }
+
+    .psStubBox {
+      float: left;
+      width: calc(237px - 2px);
+      border: 1px solid #0084b5;
+      margin: 10px;
+      background-color: #fff
+    }
+
+    .psStubBox .psStubBoxHead {
+      background-color: #0084b5;
+      padding: 10px
+    }
+
+    .psStubBox .psStubBoxHead h3 {
+      padding: 0;
+      margin: 0;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1.2rem
+    }
+
+    .psStubFields ul {
+      padding: 0;
+      margin: 12px 0 0;
+      list-style: none;
+      width: 100%
+    }
+
+    .psStubFields li {
+      padding: 5px 10px
+    }
+
+    .psStubFields .psStubField {
+      position: relative;
+      width: 100%;
+      min-height: 30px
+    }
+
+    .psStubFields .psStubField .psStubTitle {
+      position: absolute;
+      top: -12px;
+      left: 5px;
+      background-color: #fff;
+      padding: 0 5px;
+      font-weight: 500;
+      color: rgb(0 0 0 / .6);
+      font-size: .8rem;
+      text-transform: uppercase
+    }
+
+    .psStubFields .psStubField input[type="text"] {
+      padding: 8px 5px;
+      width: 100%;
+      font-family: inherit;
+      font-size: .9rem;
+      outline: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      border: 1px solid #ccc
+    }
+
+    .psStubBox.enPsStubBox {
+      width: calc(751px - 2px)
+    }
+
+    .psStubBox.enPsStubBox .psStubFields ul {
+      overflow: hidden;
+      padding-top: 10px
+    }
+
+    .psStubBox.enPsStubBox .psStubFields li {
+      float: left;
+      width: calc(33.33% - 20px)
+    }
+
+    .cookie_table {
+      width: 100%;
+      font-size: 16px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      overflow-x: scroll;
+      display: block;
+      margin: 20px 0
+    }
+
+    .cookie_table .ck_row {
+      float: left;
+      width: 100%;
+      min-width: 850px;
+      border-bottom: 1px solid #ccc
+    }
+
+    .cookie_table .ck_row .ck_col {
+      float: left;
+      width: calc(20% - 20px);
+      min-width: 150px;
+      padding: 10px;
+      text-align: left;
+      color: #000
+    }
+
+    .cookie_table .ck_row_head {
+      background-color: #ccc;
+      font-weight: 600
+    }
+
+    .cookie_table .ck_row.ck_row_12 {
+      border: none
+    }
+
+    .ps_cookie_banner_cover,
+    .ps_cookie_pref_cover {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgb(0 0 0 / .5);
+      display: none;
+      z-index: 999999
+    }
+
+    .ps_cookie_banner,
+    .ps_cookie_pref {
+      position: fixed;
+      background-color: #fff;
+      font-size: 16px;
+      display: none;
+      z-index: 9999999
+    }
+
+    .ps_cookie_banner {
+      font-family: inherit;
+      bottom: 0;
+      width: calc(100% - 40px);
+      text-align: left;
+      margin: 20px
+    }
+
+    .ps_cookie_banner .ps_cookie_container {
+      font-size: 1rem;
+      margin: 40px
+    }
+
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_heading {
+      width: 100%;
+      padding-bottom: 10px
+    }
+
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_heading span {
+      font-size: 1.6rem;
+      font-weight: 500
+    }
+
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_body,
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_body li .ps_cookie_single {
+      overflow: hidden
+    }
+
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_content {
+      float: left;
+      width: 58%;
+      font-size: 1rem
+    }
+
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons {
+      float: right;
+      width: 42%
+    }
+
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      float: right
+    }
+
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul li {
+      float: left;
+      margin-right: 5px
+    }
+
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul li span {
+      display: flex;
+      width: auto;
+      padding: 8px 10px;
+      margin: 0 auto;
+      background-color: #666;
+      font-family: inherit;
+      font-size: 16px;
+      color: #fff;
+      border: 1px solid #666;
+      border-radius: 0;
+      cursor: pointer;
+      text-decoration: none;
+      align-items: center
+    }
+
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul li span svg,
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer ul li span svg {
+      vertical-align: middle;
+      width: 18px;
+      height: 18px;
+      margin-top: -3px;
+      margin-right: 3px;
+      color: #022c3b;
+      background-color: #fff;
+      padding: 3px;
+      border-radius: 50%;
+      border: 1px solid #666
+    }
+
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul li span.active,
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul li span:hover,
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer ul li span.active,
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer ul li span:hover {
+      border: 1px solid #0084b5;
+      background-color: #0792c6;
+      background: -webkit-linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      background: -o-linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      background: -moz-linear-gradient(top, #0792c6, #0084b5, #0792c6);
+      background: linear-gradient(top, #0792c6, #0084b5, #0792c6)
+    }
+
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul li span.active svg,
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul li span:hover svg,
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer ul li a:hover svg {
+      border: 1px solid #0084b5
+    }
+
+    .ps_cookie_pref {
+      width: 700px;
+      left: calc(50% - 350px);
+      font-family: "PT Sans", sans-serif;
+      top: calc(50% - 273px)
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container {
+      margin: 0 20px
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_heading {
+      text-align: left;
+      height: 66px
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_heading .close_pref {
+      float: right;
+      margin-top: 21px
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_heading .close_pref i {
+      cursor: pointer
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_heading h2 {
+      font-weight: 500;
+      margin: 0;
+      padding: 20px 0 0;
+      line-height: 1.6rem;
+      font-size: 1.6rem;
+      display: block;
+      float: left
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_heading h2 svg {
+      vertical-align: bottom
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_body {
+      overflow: hidden;
+      height: 358px;
+      max-height: 358px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      border: 1px solid #ddd;
+      padding: 20px
+    }
+
+    ::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 7px
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background-color: rgb(0 0 0 / .5);
+      box-shadow: 0 0 1px rgb(255 255 255 / .5)
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_body p {
+      margin: 0 0 10px;
+      padding: 0;
+      color: #777
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_body ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      overflow: hidden
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_body li {
+      float: left;
+      clear: both;
+      margin-bottom: 10px
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_body li .ps_cookie_single .ps_select {
+      float: left;
+      width: 40px;
+      text-align: left
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_body li .ps_cookie_single .ps_select input {
+      width: 20px;
+      height: 20px;
+      margin-top: 5px
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_body li .ps_cookie_single .ps_cookie_single_content {
+      float: left;
+      width: calc(100% - 40px)
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_body li .ps_cookie_single .ps_cookie_single_content h4 {
+      margin: 0;
+      padding: 0;
+      font-weight: 500;
+      font-size: 1.1rem
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_body li .ps_cookie_single .ps_cookie_single_content p {
+      margin: 0;
+      padding: 0;
+      color: #777
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer {
+      overflow: hidden;
+      height: 80px;
+      max-height: 80px
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer ul {
+      list-style: none;
+      margin: 20px auto 0;
+      padding: 0;
+      overflow: hidden;
+      display: table
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer ul li {
+      float: left;
+      margin: 0 3px
+    }
+
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer ul li span {
+      display: flex;
+      width: auto;
+      padding: 8px 10px;
+      margin: 0 auto;
+      background-color: #666;
+      font-family: inherit;
+      font-size: 1rem;
+      color: #fff;
+      border: 1px solid #666;
+      border-radius: 0;
+      cursor: pointer;
+      text-decoration: none;
+      align-items: center
+    }
+
+    .fico {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background-color: #fff;
+      border-radius: 50%;
+      line-height: 1;
+      border: 1px solid #022c3b
+    }
+
+    .fico img {
+      width: 18px;
+      height: 18px;
+      margin: 3px
+    }
+
+    .fico.fico24 {
+      border-radius: 0%;
+      border: none
+    }
+
+    .fico.fico24 img {
+      width: 24px;
+      height: 24px;
+      margin: 0;
+      vertical-align: bottom
+    }
+
+    .mfico {
+      display: inline-block;
+      width: 24px;
+      height: 24px
+    }
+
+    .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul li span i.fico,
+    .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer ul li span i.fico {
+      margin-right: 5px
+    }
+
+    .fico.fico_del {
+      width: auto;
+      height: auto;
+      border: none;
+      float: right
+    }
+
+    .fico_del img {
+      vertical-align: bottom;
+      margin: 0
+    }
+
+    .fico.fico_dr {
+      border-color: #74121A;
+      margin-right: 5px
+    }
+
+    .fico.fico_grn {
+      border-color: #3D8C40;
+      margin-right: 5px
+    }
+
+    .fico.fico_w {
+      border: none;
+      border-radius: 0%;
+      background: #fff0;
+      margin-right: 5px
+    }
+
+    .fico.fico_w img {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+      margin: 0
+    }
+
+    .fico.fico_w.fico_wh {
+      margin-right: 0
+    }
+
+    .fico.fico_w.fico_wh img {
+      margin-top: -4px
+    }
+
+    .fico.fico_g,
+    .fico.fico_b {
+      border: none;
+      border-radius: 0%;
+      background: #fff0;
+      width: auto;
+      height: auto
+    }
+
+    .fico.fico_g img,
+    .fico.fico_b img {
+      width: auto;
+      height: auto;
+      margin: 0
+    }
+
+    @media (min-width: 320px) and (max-width:480px) {
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul li,
+      .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer ul li {
+        width: 100%;
+        clear: both;
+        margin: 5px 0
+      }
+
+      .ps_cookie_banner {
+        position: fixed;
+        top: 20px;
+        margin: 0 20px 20px;
+        bottom: auto
+      }
+
+      .ps_cookie_banner .ps_cookie_container {
+        margin: 20px
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons,
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_content {
+        width: 100%
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul {
+        float: left;
+        width: 100%
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_content {
+        margin-bottom: 10px
+      }
+
+      .ps_cookie_pref {
+        width: calc(100% - 40px);
+        left: auto;
+        position: absolute;
+        top: 0;
+        bottom: auto;
+        margin: 20px
+      }
+
+      .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer {
+        height: 169px;
+        max-height: 169px;
+        line-heightt: 1
+      }
+
+      .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer ul {
+        width: 100%;
+        margin: 5px 0 10px
+      }
+    }
+
+    @media (min-width: 481px) and (max-width:640px) {
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul li,
+      .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer ul li {
+        width: 100%;
+        clear: both;
+        margin: 5px 0
+      }
+
+      .ps_cookie_banner {
+        position: fixed;
+        top: 20px;
+        margin: 0 20px 20px;
+        bottom: auto
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons,
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_content {
+        width: 100%
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul {
+        float: left;
+        width: 100%
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_content {
+        margin-bottom: 10px
+      }
+
+      .ps_cookie_pref {
+        width: calc(100% - 40px);
+        left: auto;
+        position: absolute;
+        top: 0;
+        bottom: auto;
+        margin: 20px
+      }
+
+      .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer {
+        height: 169px;
+        max-height: 169px;
+        line-heightt: 1
+      }
+
+      .ps_cookie_pref .ps_cookie_pref_container .ps_cookie_pref_footer ul {
+        width: 100%;
+        margin: 5px 0 10px
+      }
+    }
+
+    @media (min-width: 641px) and (max-width:960px) {
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons,
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_content {
+        width: 100%
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul {
+        float: left
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_content {
+        margin-bottom: 10px
+      }
+
+      .ps_cookie_pref {
+        width: calc(100% - 40px);
+        left: auto;
+        position: absolute;
+        top: 0;
+        bottom: auto;
+        margin: 20px
+      }
+    }
+
+    @media (min-width: 961px) and (max-width:1024px) {
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons,
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_content {
+        width: 100%
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul {
+        float: left
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_content {
+        margin-bottom: 10px
+      }
+    }
+
+    @media (min-width: 1025px) and (max-width:1280px) {
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons,
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_content {
+        width: 100%
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul {
+        float: left
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_content {
+        margin-bottom: 10px
+      }
+    }
+
+    @media (min-width: 1281px) and (max-width:1330px) {
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons,
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_content {
+        width: 100%
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_buttons ul {
+        float: left
+      }
+
+      .ps_cookie_banner .ps_cookie_container .ps_cookie_body .ps_cookie_content {
+        margin-bottom: 10px
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0px;
+        margin: 0;
+        display: block;
+      }
+
+      .paystub-outer {
+        box-shadow: none;
+        border: none;
+        background: none;
+        padding: 0;
+        transform: none !important;
+      }
+
+      .paystub-container {
+        border: 1px solid #ccc;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="paystub-outer">
+    <div class="paystub-container">
+      <form method="post" action="#" novalidate autocomplete="off" onsubmit="return false;">
+        <div class="stub_form_container">
+          <!--Stub-->
+          <div class="stub regular">
+            <table style="width: 100%;" cellspacing="0" cellpadding="0" border="0">
+              <!--Row 1-->
+              <tbody>
+                <tr>
+                  <td>
+                    <table cellspacing="0" cellpadding="0" border="0">
+                      <tbody>
+                        <tr>
+                          <td class="row1 col1">#<input type="text" name="chkNo" id="chkNo" value=""
+                              placeholder="Check No." class="black border size80" style="height: 25px;"></td>
+                          <td class="row1 col2">EARNINGS STATEMENT</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <!--Row 1-->
+
+                <!--Row 2,3-->
+                <tr>
+                  <td>
+                    <table cellspacing="0" cellpadding="0" border="0">
+                      <tbody>
+                        <tr>
+                          <td class="row2 col1">COMPANY NAME</td>
+                          <td class="row2 col2">COMPANY ADDRESS</td>
+                        </tr>
+                        <tr>
+                          <td class="row3 col1">
+                            <input type="text" name="company_name" id="company_name" value=""
+                              placeholder="Your Company Name" class="black">
+                          </td>
+                          <td class="row3 col2">
+                            <input type="text" name="company_address" id="company_address" value=""
+                              placeholder="Your Company Address" class="black">
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <!--Row 2,3-->
+
+                <!--Row 4,5-->
+                <tr>
+                  <td>
+                    <table cellspacing="0" cellpadding="0" border="0">
+                      <tbody>
+                        <tr>
+                          <td class="row4 col1">EMPLOYEE NAME</td>
+                          <td class="row4 col2">SSN</td>
+                          <td class="row4 col3">MARITAL STATUS</td>
+                          <td class="row4 col4">EMPLOYEE NO.</td>
+                        </tr>
+                        <tr>
+                          <td class="row5 col1">
+                            <input type="text" name="full_name" id="full_name" value="" placeholder="Employee Name"
+                              class="black">
+                          </td>
+                          <td class="row5 col2">xxx-xx-<input type="text" name="ssn" id="ssn" maxlength="4" value=""
+                              placeholder="Last 4 No." class="border black size70"></td>
+                          <td class="row5 col3">
+                            <select name="mStatus" id="mStatus"
+                              onchange="if (!window.__cfRLUnblockHandlers) return false; doCalc()"
+                              class="border black size100">
+                              <option selected="selected">Single</option>
+                              <option>Married</option>
+                              <option value="divorced">Divorced</option>
+                              <option value="widowed">Widowed</option>
+                            </select>
+                          </td>
+                          <td class="row5 col4"><input type="text" name="employee_number" id="employee_number"
+                              value="12" class="black size80 border center"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <!--Row 4,5-->
+
+                <!--Added Row-->
+                <tr id="vis_full_address" style="display: none;">
+                  <td>
+                    <table cellspacing="0" cellpadding="0" border="0">
+                      <tbody>
+                        <tr>
+                          <td class="row4_1 col1">EMPLOYEE ADDRESS</td>
+                        </tr>
+                        <tr>
+                          <td class="row5_1 col1"><input type="text" name="full_address" id="full_address" value=""
+                              placeholder="Employee Address" class="black"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <!--Added Row-->
+
+                <!--Row 6,7-->
+                <tr>
+                  <td>
+                    <table cellspacing="0" cellpadding="0" border="0">
+                      <tbody>
+                        <tr>
+                          <td class="row6 col1">PAY DATE</td>
+                          <td class="row6 col2">PAY PERIOD</td>
+                          <td class="row6 col3">PAY MODE</td>
+                          <td class="row6 col4">PAY TYPE</td>
+                          <td class="row6 col5">EXEMPTIONS</td>
+                        </tr>
+                        <tr>
+                          <td class="row7 col1"><input type="text" name="pay_date" id="pay_date" value="2026-03-11"
+                              class="size100 black center border"></td>
+
+                          <td class="row7 col2">
+                            <input type="text" name="pay_period_start" id="pay_period_start" value="2026-03-04"
+                              class="size100 black center border"> - <input type="text" name="pay_period_end"
+                              id="pay_period_end" value="2026-03-10" class="size100 black center border">
+                          </td>
+                          <td class="row7 col3"><select id="payment_cycle" name="payment_cycle"
+                              class="black border size80"
+                              onchange="if (!window.__cfRLUnblockHandlers) return false; setPayModeBy(this.value);">
+                              <option value="52" selected="selected">Weekly</option>
+                              <option value="26">Bi-Weekly</option>
+                              <option value="24">Bi-Monthly</option>
+                              <option value="12">Monthly</option>
+                              <option value="1">Annually</option>
+                            </select></td>
+                          <td class="row7 col4">
+                            <select name="jobType" id="jobType"
+                              onchange="if (!window.__cfRLUnblockHandlers) return false; inpType(this.value);"
+                              class="black border size80">
+                              <option value="1" selected="selected">Hourly</option>
+                              <option value="0">Salary</option>
+                            </select>
+                          </td>
+                          <td class="row7 col5">
+                            <select name="exemp" id="exemp"
+                              onchange="if (!window.__cfRLUnblockHandlers) return false; doCalc()"
+                              class="black border size60">
+                              <option value="0" selected="selected">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                            </select>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <!--Row 6,7-->
+
+                <!--Row 8,9,10,11,12-->
+                <tr>
+                  <td>
+                    <table cellspacing="0" cellpadding="0" border="0">
+                      <tbody>
+                        <tr>
+                          <td class="row8 col1">INCOME</td>
+                          <td class="row8 col2">RATE</td>
+                          <td class="row8 col3">HOUR</td>
+                          <td class="row8 col4">CURRENT TOTAL</td>
+                          <td class="row8 col5">DEDUCTIONS</td>
+                          <td class="row8 col6">CURRENT TOTAL</td>
+                          <td class="row8 col7">YTD TOTAL</td>
+                        </tr>
+                        <tr style="transform: translateY(-1px);">
+                          <td rowspan="4" class="row9 col1"><span>GROSS WAGES</span></td>
+                          <td class="row9 col2"><input type="text" id="rate" name="rate" value="15.00"
+                              class="border black size60 center"></td>
+                          <td class="row9 col3"><input type="text" id="hours" name="hours" value="40"
+                              class="border black size60 center"></td>
+                          <td class="row9 col4"><input type="text" name="current_total" id="current_total"
+                              value="600.00" class="border black size60 right"></td>
+                          <td class="row9 col5">FICA-MEDICARE</td>
+                          <td class="row9 col6"><input type="text" name="fica_medicare_total" id="fica_medicare_total"
+                              value="8.70" class="border black size60 right"></td>
+                          <td class="row9 col7"><input type="text" name="fica_medicare_ytd_total"
+                              id="fica_medicare_ytd_total" value="87.00" class="border black size60 right"></td>
+                        </tr>
+                        <tr>
+                          <td class="row10 col2"></td>
+                          <td class="row10 col3"></td>
+                          <td class="row10 col4"></td>
+                          <td class="row10 col5">FICA-SOCIAL SEC.</td>
+                          <td class="row10 col6"><input type="text" name="fica_social_security_total"
+                              id="fica_social_security_total" value="37.20" class="border black size60 right"></td>
+                          <td class="row10 col7"><input type="text" name="fica_social_security_ytd_total"
+                              id="fica_social_security_ytd_total" value="372.00" class="border black size60 right"></td>
+                        </tr>
+                        <tr>
+                          <td class="row11 col2"></td>
+                          <td class="row11 col3"></td>
+                          <td class="row11 col4"></td>
+                          <td class="row11 col5">FEDERAL TAX</td>
+                          <td class="row11 col6"><input type="text" name="federal_tax_total" id="federal_tax_total"
+                              value="75.10" class="border black size60 right"></td>
+                          <td class="row11 col7"><input type="text" name="federal_tax_ytd_total"
+                              id="federal_tax_ytd_total" value="751.00" class="border black size60 right"></td>
+                        </tr>
+                        <tr style="transform: translateY(1px);">
+                          <td class="row12 col2"></td>
+                          <td class="row12 col3"></td>
+                          <td class="row12 col4"></td>
+                          <td class="row12 col5">STATE TAX</td>
+                          <td class="row12 col6"><input type="text" name="state_tax_total" id="state_tax_total" value="30.00"
+                              class="border black size60 right"></td>
+                          <td class="row12 col7"><input type="text" name="state_tax_ytd_total" id="state_tax_ytd_total"
+                              value="300.00" class="border black size60 right"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <!--Row 8,9,10,11,12-->
+
+                <!--Row 13,14-->
+                <tr>
+                  <td>
+                    <table cellspacing="0" cellpadding="0" border="0">
+                      <tbody>
+                        <tr>
+                          <td class="row13 col1">YTD GROSS</td>
+                          <td class="row13 col2">YTD DEDUCTIONS</td>
+                          <td class="row13 col3">YTD NET PAY</td>
+                          <td class="row13 col4">TOTAL</td>
+                          <td class="row13 col5">DEDUCTIONS</td>
+                          <td class="row13 col6">NET PAY</td>
+                        </tr>
+                        <tr>
+                          <td class="row14 col1"><input type="text" id="ytd_gross" value="6000.00" name="ytd_gross"
+                              class="border black size100 center"></td>
+                          <td class="row14 col2"><input type="text" id="ytd_deductions" value="1510.00" name="ytd_deductions"
+                              class="border black size100 center"></td>
+                          <td class="row14 col3"><input type="text" id="ytd_net_pay" value="4490.00" name="ytd_net_pay"
+                              class="border black size100 center"></td>
+                          <td class="row14 col4"><input type="text" id="total" value="600.00" name="total"
+                              class="border black size100 center"></td>
+                          <td class="row14 col5"><input type="text" id="deductions" name="deductions" value="151.00"
+                              class="border black size100 center"></td>
+                          <td class="row14 col6"><input type="text" id="net_pay" value="449.00" name="net_pay"
+                              class="border black size100 center"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <!--Row 13,14-->
+              </tbody>
+            </table>
+          </div>
+          <!--Stub-->
+        </div>
+      </form>
+    </div><!-- /.paystub-container -->
+  </div><!-- /.paystub-outer -->
+
+  <script nonce="pAy5tUb2026xSS">
+    (function () {
+      'use strict';
+
+      var STRIP = [/<[^>]*>/g, /javascript\s*:/gi, /on\w+\s*=/gi, /data\s*:/gi];
+      function sanitise(str) { STRIP.forEach(function (re) { str = str.replace(re, ''); }); return str; }
+
+      var form = document.querySelector('form');
+      if (form) {
+        form.addEventListener('blur', function (e) {
+          var t = e.target;
+          if (t.tagName === 'INPUT' && t.type === 'text') { var c = sanitise(t.value); if (c !== t.value) t.value = c; }
+        }, true);
+        form.addEventListener('paste', function (e) {
+          var t = e.target;
+          if (t.tagName !== 'INPUT' || t.type !== 'text') return;
+          e.preventDefault();
+          var raw = (e.clipboardData || window.clipboardData).getData('text');
+          var clean = sanitise(raw);
+          if (typeof t.setRangeText === 'function') {
+            t.setRangeText(clean, t.selectionStart, t.selectionEnd, 'end');
+            t.dispatchEvent(new Event('input', { bubbles: true }));
+          } else { t.value = sanitise(t.value.slice(0, t.selectionStart) + clean + t.value.slice(t.selectionEnd)); }
+        });
+      }
+
+      /* Responsive scale-to-fit */
+      var outer = document.querySelector('.paystub-outer');
+      if (!outer) return;
+      function fit() {
+        var vw = window.innerWidth || document.documentElement.clientWidth;
+        var cardW = outer.offsetWidth || 840;
+        var gap = 16;
+        if (vw >= cardW + gap * 2) {
+          outer.style.transform = '';
+          outer.style.marginBottom = '';
+        } else {
+          var scale = (vw - gap * 2) / cardW;
+          var naturalH = outer.offsetHeight;
+          outer.style.transform = 'scale(' + scale + ')';
+          outer.style.transformOrigin = 'top center';
+          outer.style.marginBottom = '-' + Math.round(naturalH * (1 - scale)) + 'px';
+        }
+      }
+      fit();
+      window.addEventListener('resize', fit, { passive: true });
+      window.addEventListener('orientationchange', function () { requestAnimationFrame(fit); });
+    })();
+  </script>
+</body>
+
+</html>

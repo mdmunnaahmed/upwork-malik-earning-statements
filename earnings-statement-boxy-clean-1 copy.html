@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Employee Earnings Statement">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none';
+               style-src 'unsafe-inline';
+               script-src 'nonce-pAy5tUb2026xSS';
+               img-src data: blob:;
+               object-src 'none';
+               base-uri 'none';
+               form-action 'none';
+               frame-ancestors 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta name="referrer" content="no-referrer">
+  <title>Earnings Statement</title>
+    
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --ff: Arial, Helvetica, sans-serif;
+      --border: #c0c0c0;
+      --lrow-bg: #d8d8d8;
+      --lrow-border: #b8b8b8;
+      --inp-border: #aaa;
+      --text-dark: #111;
+      --text-mid: #555;
+      --placeholder: #999;
+      --blue: #4a7fa0;
+      --blue-glow: rgba(74, 127, 160, .2);
+      --dark-hdr: #4a4a4a;
+    }
+
+    input,
+    select {
+      font-family: var(--ff);
+      font-size: 13px;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+
+    input[type="number"] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+
+    input[type="date"] {
+      color-scheme: light;
+    }
+
+    body {
+      background: #b0b0b0;
+      font-family: var(--ff);
+      font-size: 13px;
+      padding: 30px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    /* ── Outer frame ── */
+    .paystub-outer {
+      border-radius: 6px;
+      border: 2px solid #999;
+      background: linear-gradient(160deg, #ddd 0%, #bbb 100%);
+      box-shadow:
+        inset 0 2px 4px rgba(255, 255, 255, .7),
+        inset 0 -2px 4px rgba(0, 0, 0, .15),
+        0 8px 32px rgba(0, 0, 0, .45),
+        0 2px 8px rgba(0, 0, 0, .3);
+      padding: 7px;
+      will-change: transform;
+    }
+
+    /* ── White document ── */
+    .paystub-container {
+      width: 820px;
+      background: #fff;
+      border: 1px solid #bbb;
+      overflow: hidden;
+    }
+
+    /* ════════════════════════════
+   1. HEADER
+════════════════════════════ */
+    .header {
+      display: flex;
+      align-items: stretch;
+      min-height: 52px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    /* Left: # Check No. */
+    .header-left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 6px;
+    }
+
+    .hash-symbol {
+      font-size: 15px;
+      font-weight: 700;
+      color: #333;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .checkno-box {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--inp-border);
+      border-radius: 2px;
+      background: #fff;
+      min-height: 28px;
+      min-width: 110px;
+      cursor: text;
+      overflow: hidden;
+    }
+
+    .checkno-box .lbl {
+      color: #888;
+      font-size: 13px;
+      padding: 4px 0 4px 7px;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .checkno-box input {
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      color: var(--text-dark);
+      flex: 1;
+      min-width: 0;
+      padding: 4px 6px;
+      outline: none;
+    }
+
+    .checkno-box input::placeholder {
+      color: transparent;
+    }
+
+    .checkno-box:focus-within {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px var(--blue-glow);
+    }
+
+    /* Right: EARNINGS STATEMENT — dark with angled left edge */
+    .header-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 20px 0 50px;
+      flex-shrink: 0;
+      overflow: hidden;
+      min-width: 340px;
+    }
+
+    /* Dark trapezoid background via clip-path */
+    .header-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #6a6a6a 0%, #4a4a4a 30%, #333 100%);
+      clip-path: polygon(40px 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+
+    .header-right span {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      font-size: 19px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      white-space: nowrap;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+    }
+
+    /* ════════════════════════════
+   2. INFO ROWS
+════════════════════════════ */
+    .info-section {
+      border-bottom: 2px solid #bbb;
+    }
+
+    /* Gray label row */
+    .lrow {
+      display: flex;
+      align-items: stretch;
+      background: var(--lrow-bg);
+      border-bottom: 1px solid var(--lrow-border);
+      min-height: 26px;
+    }
+
+    /* White value row */
+    .vrow {
+      display: flex;
+      align-items: stretch;
+      background: #fff;
+      border-bottom: 1px solid #d8d8d8;
+      min-height: 36px;
+    }
+
+    .vrow:last-child {
+      border-bottom: none;
+    }
+
+    /* Label cell */
+    .lc {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      border-right: 1px solid var(--lrow-border);
+      white-space: nowrap;
+    }
+
+    .lc:last-child {
+      border-right: none;
+    }
+
+    .lc-center {
+      justify-content: center;
+    }
+
+    /* Value cell */
+    .vc {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 10px;
+      border-right: 1px solid #d8d8d8;
+    }
+
+    .vc:last-child {
+      border-right: none;
+    }
+
+    .vc-center {
+      justify-content: center;
+    }
+
+    /* ── Column widths ── */
+    /* Row A: Company */
+    .wA1 {
+      width: 300px;
+      flex-shrink: 0;
+    }
+
+    .wA2 {
+      flex: 1;
+    }
+
+    /* Row B: Employee */
+    .wB1 {
+      width: 240px;
+      flex-shrink: 0;
+    }
+
+    .wB2 {
+      width: 200px;
+      flex-shrink: 0;
+    }
+
+    .wB3 {
+      width: 210px;
+      flex-shrink: 0;
+    }
+
+    .wB4 {
+      flex: 1;
+    }
+
+    /* Row C: Pay */
+    .wC1 {
+      width: 140px;
+      flex-shrink: 0;
+    }
+
+    .wC2 {
+      width: 270px;
+      flex-shrink: 0;
+    }
+
+    .wC3 {
+      width: 120px;
+      flex-shrink: 0;
+    }
+
+    .wC4 {
+      width: 120px;
+      flex-shrink: 0;
+    }
+
+    .wC5 {
+      flex: 1;
+    }
+
+    /* ── Ghost inputs (company/employee name placeholders) ── */
+    .ghost-inp {
+      width: 100%;
+      background: transparent;
+      border: none;
+      font-size: 13px;
+      color: #888;
+      padding: 0;
+      outline: none;
+    }
+
+    .ghost-inp::placeholder {
+      color: #999;
+    }
+
+    .ghost-inp:focus {
+      color: var(--text-dark);
+    }
+
+    /* ── SSN inline ── */
+    .ssn-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .ssn-pfx {
+      font-size: 13px;
+      color: #444;
+      white-space: nowrap;
+      margin-right: 2px;
+    }
+
+    .ssn-box {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--inp-border);
+      border-radius: 2px;
+      background: #fff;
+      min-height: 26px;
+      min-width: 88px;
+    }
+
+    .ssn-box input {
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      color: var(--text-dark);
+      width: 100%;
+      padding: 3px 6px;
+      outline: none;
+      text-align: left;
+    }
+
+    .ssn-box input::placeholder {
+      color: #999;
+    }
+
+    .ssn-box:focus-within {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px var(--blue-glow);
+    }
+
+    /* ── Dropdown select ── */
+    .sel-inp {
+      background: #fff;
+      border: 1px solid var(--inp-border);
+      border-radius: 2px;
+      font-size: 13px;
+      color: var(--text-dark);
+      padding: 3px 4px;
+      outline: none;
+      cursor: pointer;
+      min-height: 26px;
+    }
+
+    .sel-inp:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px var(--blue-glow);
+    }
+
+    .sel-marital {
+      width: 130px;
+    }
+
+    .sel-mode {
+      width: 104px;
+    }
+
+    .sel-type {
+      width: 104px;
+    }
+
+    .sel-exempt {
+      width: 64px;
+    }
+
+    /* ── Employee No. ── */
+    .empno-box {
+      border: 1px solid var(--inp-border);
+      border-radius: 2px;
+      background: #fff;
+      font-size: 13px;
+      color: var(--text-dark);
+      text-align: center;
+      width: 58px;
+      padding: 3px 5px;
+      outline: none;
+      min-height: 26px;
+    }
+
+    .empno-box:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px var(--blue-glow);
+    }
+
+    /* ── Date inputs ── */
+    .date-box {
+      border: 1px solid var(--inp-border);
+      border-radius: 2px;
+      background: #fff;
+      font-size: 12px;
+      color: var(--text-dark);
+      padding: 3px 5px;
+      outline: none;
+      cursor: pointer;
+      min-height: 26px;
+      width: 112px;
+    }
+
+    .date-box:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px var(--blue-glow);
+    }
+
+    .period-sep {
+      font-size: 14px;
+      font-weight: 600;
+      color: #444;
+      padding: 0 4px;
+    }
+
+    .vc-gap {
+      gap: 0;
+    }
+
+    /* ════════════════════════════
+   3. EARNINGS TABLE
+   Cols: 138+82+66+120+158+130+126 = 820
+════════════════════════════ */
+    .earnings-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .earnings-table col:nth-child(1) {
+      width: 138px;
+    }
+
+    .earnings-table col:nth-child(2) {
+      width: 82px;
+    }
+
+    .earnings-table col:nth-child(3) {
+      width: 66px;
+    }
+
+    .earnings-table col:nth-child(4) {
+      width: 120px;
+    }
+
+    .earnings-table col:nth-child(5) {
+      width: 158px;
+    }
+
+    .earnings-table col:nth-child(6) {
+      width: 130px;
+    }
+
+    .earnings-table col:nth-child(7) {
+      width: 126px;
+    }
+
+    /* Header row — dark gray */
+    .earnings-table thead tr {
+      background: linear-gradient(180deg, #5a5a5a 0%, #3e3e3e 100%);
+    }
+
+    .earnings-table thead th {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      padding: 7px 8px;
+      border-right: 1px solid #333;
+      text-align: center;
+      white-space: nowrap;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+    }
+
+    .earnings-table thead th:last-child {
+      border-right: none;
+    }
+
+    /* Body rows */
+    .earnings-table tbody tr {
+      height: 36px;
+    }
+
+    .earnings-table td {
+      padding: 5px 8px;
+      border-bottom: 1px solid #e0e0e0;
+      border-right: 1px solid #e0e0e0;
+      font-size: 13px;
+      color: var(--text-dark);
+      vertical-align: middle;
+      background: #fff;
+    }
+
+    .earnings-table td:last-child {
+      border-right: none;
+    }
+
+    .earnings-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Empty left cells when no income data */
+    .td-empty {
+      background: #fff;
+    }
+
+    /* GROSS WAGES cell */
+    .td-income {
+      font-weight: 700;
+      font-size: 13px;
+      text-align: left;
+      line-height: 1.3;
+      color: #111;
+      padding-left: 10px;
+    }
+
+    /* Deduction label cell */
+    .td-ded {
+      font-size: 13px;
+      font-weight: 400;
+      text-align: left;
+      color: #222;
+      padding-left: 10px;
+    }
+
+    /* Numeric inputs in table */
+    .tbl-inp {
+      display: block;
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--inp-border);
+      border-radius: 2px;
+      padding: 3px 6px;
+      text-align: right;
+      font-size: 13px;
+      color: var(--text-dark);
+      outline: none;
+    }
+
+    .tbl-inp:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px var(--blue-glow);
+    }
+
+    /* ════════════════════════════
+   4. YTD BOTTOM
+════════════════════════════ */
+    .ytd-wrap {
+      border-top: 2px solid #bbb;
+    }
+
+    .ytd-labels {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      background: linear-gradient(180deg, #5a5a5a 0%, #3e3e3e 100%);
+    }
+
+    .ytd-labels .yl {
+      padding: 7px 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      text-align: center;
+      border-right: 1px solid #333;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+      white-space: nowrap;
+    }
+
+    .ytd-labels .yl:last-child {
+      border-right: none;
+    }
+
+    .ytd-values {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      background: #fff;
+    }
+
+    .ytd-values .yv {
+      padding: 6px 8px;
+      border-right: 1px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+    }
+
+    .ytd-values .yv:last-child {
+      border-right: none;
+    }
+
+    .ytd-inp {
+      display: block;
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--inp-border);
+      border-radius: 2px;
+      padding: 3px 6px;
+      text-align: right;
+      font-size: 13px;
+      color: var(--text-dark);
+      outline: none;
+    }
+
+    .ytd-inp:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px var(--blue-glow);
+    }
+
+    /* Screen-reader only */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      body {
+        padding: 12px 6px;
+        display: block;
+        text-align: center;
+      }
+
+      .paystub-outer {
+        display: inline-block;
+        transform-origin: top center;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .paystub-outer {
+        box-shadow: none;
+        border: none;
+        background: none;
+        padding: 0;
+        transform: none !important;
+      }
+
+      .paystub-container {
+        border: 1px solid #ccc;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="paystub-outer">
+    <div class="paystub-container">
+      <form method="post" action="#" novalidate autocomplete="off" onsubmit="return false;">
+
+        <!-- ══ 1. HEADER ══ -->
+        <div class="header">
+          <div class="header-left">
+            <span class="hash-symbol">#</span>
+            <label class="checkno-box" for="check_no_input">
+              <span class="lbl">Check No.</span>
+              <input type="text" id="check_no_input" name="check_no" autocomplete="off" aria-label="Check Number">
+            </label>
+          </div>
+          <div class="header-right">
+            <span>Earnings Statement</span>
+          </div>
+        </div>
+
+        <!-- ══ 2. INFO SECTION ══ -->
+        <div class="info-section">
+
+          <!-- COMPANY -->
+          <div class="lrow">
+            <div class="lc wA1">Company Name</div>
+            <div class="lc wA2">Company Address</div>
+          </div>
+          <div class="vrow">
+            <div class="vc wA1">
+              <input class="ghost-inp" type="text" name="company_name" value="Your Company Name"
+                autocomplete="organization" aria-label="Company Name">
+            </div>
+            <div class="vc wA2">
+              <input class="ghost-inp" type="text" name="company_address" value="Your Company Address"
+                autocomplete="street-address" aria-label="Company Address">
+            </div>
+          </div>
+
+          <!-- EMPLOYEE -->
+          <div class="lrow">
+            <div class="lc wB1">Employee Name</div>
+            <div class="lc wB2 lc-center">SSN</div>
+            <div class="lc wB3 lc-center">Marital Status</div>
+            <div class="lc wB4 lc-center">Employee No.</div>
+          </div>
+          <div class="vrow">
+            <div class="vc wB1">
+              <input class="ghost-inp" type="text" name="employee_name" placeholder="Employee Name" autocomplete="off"
+                aria-label="Employee Name">
+            </div>
+            <div class="vc wB2 vc-center">
+              <div class="ssn-row">
+                <span class="ssn-pfx">xxx-xx-</span>
+                <label class="ssn-box" for="ssn_last4">
+                  <input type="text" id="ssn_last4" name="ssn_last4" maxlength="4" inputmode="numeric"
+                    pattern="[0-9]{4}" placeholder="Last 4 No." autocomplete="off" aria-label="SSN Last 4 Digits">
+                </label>
+              </div>
+            </div>
+            <div class="vc wB3 vc-center">
+              <select class="sel-inp sel-marital" name="marital_status" aria-label="Marital Status">
+                <option value="single">Single</option>
+                <option value="married">Married</option>
+                <option value="divorced">Divorced</option>
+                <option value="widowed">Widowed</option>
+              </select>
+            </div>
+            <div class="vc wB4 vc-center">
+              <input class="empno-box" type="number" name="employee_no" value="12" min="1" max="99999"
+                autocomplete="off" aria-label="Employee Number">
+            </div>
+          </div>
+
+          <!-- PAY -->
+          <div class="lrow">
+            <div class="lc wC1 lc-center">Pay Date</div>
+            <div class="lc wC2 lc-center">Pay Period</div>
+            <div class="lc wC3 lc-center">Pay Mode</div>
+            <div class="lc wC4 lc-center">Pay Type</div>
+            <div class="lc wC5 lc-center">Exemptions</div>
+          </div>
+          <div class="vrow">
+            <div class="vc wC1 vc-center">
+              <input class="date-box" type="date" name="pay_date" value="2026-03-11" autocomplete="off"
+                aria-label="Pay Date">
+            </div>
+            <div class="vc wC2 vc-center" style="gap:2px; display:flex; align-items:center;">
+              <input class="date-box" type="date" name="pay_period_start" value="2026-03-04" autocomplete="off"
+                aria-label="Pay Period Start">
+              <span class="period-sep">-</span>
+              <input class="date-box" type="date" name="pay_period_end" value="2026-03-10" autocomplete="off"
+                aria-label="Pay Period End">
+            </div>
+            <div class="vc wC3 vc-center">
+              <select class="sel-inp sel-mode" name="pay_mode" aria-label="Pay Mode">
+                <option value="weekly">Weekly</option>
+                <option value="biweekly">Bi-Weekly</option>
+                <option value="semimonthly">Semi-Monthly</option>
+                <option value="monthly">Monthly</option>
+                <option value="annually">Annually</option>
+              </select>
+            </div>
+            <div class="vc wC4 vc-center">
+              <select class="sel-inp sel-type" name="pay_type" aria-label="Pay Type">
+                <option value="hourly">Hourly</option>
+                <option value="salary">Salary</option>
+              </select>
+            </div>
+            <div class="vc wC5 vc-center">
+              <select class="sel-inp sel-exempt" name="exemptions" aria-label="Exemptions">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+              </select>
+            </div>
+          </div>
+
+        </div><!-- /.info-section -->
+
+        <!-- ══ 3. EARNINGS TABLE ══ -->
+        <table class="earnings-table" aria-label="Earnings and Deductions">
+          <caption class="sr-only">Earnings and Deductions Table</caption>
+          <colgroup>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Income</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Hour</th>
+              <th scope="col">Current Total</th>
+              <th scope="col">Deductions</th>
+              <th scope="col">Current Total</th>
+              <th scope="col">YTD Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-income">GROSS<br>WAGES</td>
+              <td><input class="tbl-inp" type="text" name="rate" value="15.00" maxlength="10" aria-label="Rate"></td>
+              <td><input class="tbl-inp" type="text" name="hours" value="40" maxlength="6" aria-label="Hours"></td>
+              <td><input class="tbl-inp" type="text" name="current_total" value="600.00" maxlength="12"
+                  aria-label="Current Total"></td>
+              <td class="td-ded">FICA-MEDICARE</td>
+              <td><input class="tbl-inp" type="text" name="fica_medicare" value="8.70" maxlength="12"
+                  aria-label="FICA Medicare Amount"></td>
+              <td><input class="tbl-inp" type="text" name="fica_medicare_ytd" value="87.00" maxlength="12"
+                  aria-label="FICA Medicare YTD"></td>
+            </tr>
+            <tr>
+              <td class="td-empty"></td>
+              <td class="td-empty"></td>
+              <td class="td-empty"></td>
+              <td class="td-empty"></td>
+              <td class="td-ded">FICA-SOCIAL SEC.</td>
+              <td><input class="tbl-inp" type="text" name="fica_social" value="37.20" maxlength="12"
+                  aria-label="FICA Social Security Amount"></td>
+              <td><input class="tbl-inp" type="text" name="fica_social_ytd" value="372.00" maxlength="12"
+                  aria-label="FICA Social Security YTD"></td>
+            </tr>
+            <tr>
+              <td class="td-empty"></td>
+              <td class="td-empty"></td>
+              <td class="td-empty"></td>
+              <td class="td-empty"></td>
+              <td class="td-ded">FEDERAL TAX</td>
+              <td><input class="tbl-inp" type="text" name="federal_tax" value="75.10" maxlength="12"
+                  aria-label="Federal Tax Amount"></td>
+              <td><input class="tbl-inp" type="text" name="federal_tax_ytd" value="751.00" maxlength="12"
+                  aria-label="Federal Tax YTD"></td>
+            </tr>
+            <tr>
+              <td class="td-empty"></td>
+              <td class="td-empty"></td>
+              <td class="td-empty"></td>
+              <td class="td-empty"></td>
+              <td class="td-ded">STATE TAX</td>
+              <td><input class="tbl-inp" type="text" name="state_tax" value="30.00" maxlength="12"
+                  aria-label="State Tax Amount"></td>
+              <td><input class="tbl-inp" type="text" name="state_tax_ytd" value="300.00" maxlength="12"
+                  aria-label="State Tax YTD"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ══ 4. YTD BOTTOM ══ -->
+        <div class="ytd-wrap">
+          <div class="ytd-labels">
+            <div class="yl">YTD Gross</div>
+            <div class="yl">YTD Deductions</div>
+            <div class="yl">YTD Net Pay</div>
+            <div class="yl">Total</div>
+            <div class="yl">Deductions</div>
+            <div class="yl">Net Pay</div>
+          </div>
+          <div class="ytd-values">
+            <div class="yv"><input class="ytd-inp" type="text" name="ytd_gross" value="6000.00" maxlength="12"
+                aria-label="YTD Gross"></div>
+            <div class="yv"><input class="ytd-inp" type="text" name="ytd_deductions" value="1510.00" maxlength="12"
+                aria-label="YTD Deductions"></div>
+            <div class="yv"><input class="ytd-inp" type="text" name="ytd_net_pay" value="4490.00" maxlength="12"
+                aria-label="YTD Net Pay"></div>
+            <div class="yv"><input class="ytd-inp" type="text" name="total" value="600.00" maxlength="12"
+                aria-label="Total"></div>
+            <div class="yv"><input class="ytd-inp" type="text" name="deductions" value="151.00" maxlength="12"
+                aria-label="Deductions"></div>
+            <div class="yv"><input class="ytd-inp" type="text" name="net_pay" value="449.00" maxlength="12"
+                aria-label="Net Pay"></div>
+          </div>
+        </div>
+
+      </form>
+    </div><!-- /.paystub-container -->
+  </div><!-- /.paystub-outer -->
+
+  <script nonce="pAy5tUb2026xSS">
+    (function () {
+      'use strict';
+
+      var STRIP = [/<[^>]*>/g, /javascript\s*:/gi, /on\w+\s*=/gi, /data\s*:/gi];
+      function sanitise(str) { STRIP.forEach(function (re) { str = str.replace(re, ''); }); return str; }
+
+      var form = document.querySelector('form');
+      if (form) {
+        form.addEventListener('blur', function (e) {
+          var t = e.target;
+          if (t.tagName === 'INPUT' && t.type === 'text') { var c = sanitise(t.value); if (c !== t.value) t.value = c; }
+        }, true);
+        form.addEventListener('paste', function (e) {
+          var t = e.target;
+          if (t.tagName !== 'INPUT' || t.type !== 'text') return;
+          e.preventDefault();
+          var raw = (e.clipboardData || window.clipboardData).getData('text');
+          var clean = sanitise(raw);
+          if (typeof t.setRangeText === 'function') {
+            t.setRangeText(clean, t.selectionStart, t.selectionEnd, 'end');
+            t.dispatchEvent(new Event('input', { bubbles: true }));
+          } else { t.value = sanitise(t.value.slice(0, t.selectionStart) + clean + t.value.slice(t.selectionEnd)); }
+        });
+      }
+
+      /* Responsive scale-to-fit */
+      var outer = document.querySelector('.paystub-outer');
+      if (!outer) return;
+      function fit() {
+        var vw = window.innerWidth || document.documentElement.clientWidth;
+        var cardW = outer.offsetWidth || 840;
+        var gap = 16;
+        if (vw >= cardW + gap * 2) {
+          outer.style.transform = '';
+          outer.style.marginBottom = '';
+        } else {
+          var scale = (vw - gap * 2) / cardW;
+          var naturalH = outer.offsetHeight;
+          outer.style.transform = 'scale(' + scale + ')';
+          outer.style.transformOrigin = 'top center';
+          outer.style.marginBottom = '-' + Math.round(naturalH * (1 - scale)) + 'px';
+        }
+      }
+      fit();
+      window.addEventListener('resize', fit, { passive: true });
+      window.addEventListener('orientationchange', function () { requestAnimationFrame(fit); });
+    })();
+  </script>
+</body>
+
+</html>
