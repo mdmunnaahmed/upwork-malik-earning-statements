@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earnings Statement</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: #000;
+  padding: 24px;
+}
+
+/* ── TOOLBAR ── */
+.toolbar {
+  display: flex; gap: 8px; align-items: center;
+  flex-wrap: wrap; margin-bottom: 22px;
+  padding: 10px 14px;
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+}
+.tip { font-size: 12px; color: #555; }
+.btn {
+  font-family: Arial; font-size: 12px; font-weight: bold;
+  padding: 5px 14px;
+  border: 1.5px solid #333;
+  background: #fff; color: #333;
+  cursor: pointer;
+}
+.btn:hover { background: #333; color: #fff; }
+.btn.primary { background: #222; color: #fff; border-color: #222; }
+.btn.primary:hover { background: #444; }
+
+/* ── EDITABLE ── */
+[contenteditable] { outline: none; cursor: text; }
+[contenteditable]:hover { background: rgba(0,0,0,0.05); border-radius: 2px; }
+[contenteditable]:focus { background: #fffbe5; box-shadow: 0 0 0 1.5px #e6b800; border-radius: 2px; }
+
+/* ── PAGE ── */
+.page { max-width: 940px; margin: 0 auto; }
+
+/* ══════════════════════════════════════
+   TOP HEADER
+   ══════════════════════════════════════ */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+/* Design LLC = bold */
+.co-name { font-size: 16px; font-weight: bold; display: block; }
+/* (00-0012345) = italic, NOT bold */
+.co-id   { font-size: 13px; font-style: italic; font-weight: normal; color: #222; display: block; margin-top: 1px; }
+/* Address = normal weight */
+.co-addr { font-size: 13px; font-weight: normal; color: #222; display: block; margin-top: 8px; line-height: 1.75; }
+/* Earnings Statement = bold */
+.hdr-right   { text-align: right; }
+.stmt-title  { font-size: 17px; font-weight: bold; display: block; }
+/* Check Number: normal | 2810 = bold */
+.check-line  { font-size: 13px; font-weight: normal; color: #222; margin-top: 3px; }
+.check-line strong { font-weight: bold; }
+
+/* ══════════════════════════════════════
+   COLOUR PALETTE  →  black / grey / white
+   ══════════════════════════════════════ */
+:root {
+  --hdr-bg:    #3a3a3a;   /* dark grey – replaces blue for header rows       */
+  --hdr-bd:    #222;      /* darker border around header rows                 */
+  --row-bd:    #bbb;      /* thin border between data rows                    */
+  --row-bd-lt: #ddd;      /* lighter inner row divider                        */
+  --tot-amt:   #ebebeb;   /* light grey bg for amount cells in total row      */
+  --outer-bd:  #555;      /* outer table border                               */
+}
+
+/* ══════════════════════════════════════
+   MAIN TABLE  –  8-column grid
+   col widths: 19 | 8 | 7 | 9 | 8 | 23 | 13 | 13  (%)
+   ══════════════════════════════════════ */
+.main {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1.5px solid var(--outer-bd);
+}
+.main td, .main th {
+  font-size: 13px;
+  font-weight: normal;
+  padding: 0;
+  vertical-align: middle;
+  border: none;
+}
+
+/* ── ROW A  Employee Info / Pay Schedule / Pay Period / Pay Date
+        Dark-grey bg  |  WHITE BOLD text  |  colspan 2 each             ── */
+.rowA td {
+  background: var(--hdr-bg);
+  color: #fff;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 9px 12px;
+  border-right: 1px solid var(--hdr-bd);
+  border-bottom: 1px solid var(--hdr-bd);
+}
+.rowA td:last-child { border-right: none; }
+.rowA .a-emp  { text-align: left; }
+.rowA .a-sch  { text-align: center; }
+.rowA .a-per  { text-align: center; }
+.rowA .a-date { text-align: center; }
+
+/* ── ROW B  Employee data  –  NOT bold, white bg, bottom border          ── */
+.rowB td {
+  background: #fff;
+  font-weight: normal;
+  font-size: 13px;
+  padding: 11px 12px;
+  border-bottom: 1.5px solid var(--outer-bd);
+  border-right: 1px solid var(--row-bd-lt);
+  vertical-align: middle;
+}
+.rowB td:last-child { border-right: none; }
+.rowB .b-emp { vertical-align: top; padding: 12px 12px; }
+/* George Mathew – NOT bold */
+.emp-name { font-weight: normal; font-size: 13px; display: block; }
+/* (XXX-XX-0909) – italic, NOT bold */
+.emp-ssn  { font-style: italic; font-weight: normal; font-size: 13px; color: #333; display: block; }
+/* Address lines – normal */
+.emp-addr { font-weight: normal; font-size: 13px; color: #333; display: block; line-height: 1.65; margin-top: 1px; }
+.rowB .b-sch  { text-align: center; }
+.rowB .b-per  { text-align: center; }
+.rowB .b-date { text-align: center; }
+
+/* ── ROW C  Column headers – dark-grey bg, WHITE BOLD text               ── */
+.rowC td {
+  background: var(--hdr-bg);
+  color: #fff;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 8px 10px;
+  border-right: 1px solid var(--hdr-bd);
+  border-bottom: 1px solid var(--hdr-bd);
+}
+.rowC td:last-child { border-right: none; }
+.rowC .c-earn { text-align: left; }
+.rowC .c-rate { text-align: right; }
+.rowC .c-hrs  { text-align: right; }
+.rowC .c-curr { text-align: right; }
+.rowC .c-ytd  { text-align: right; }
+/* Deductions side – white left-border divider */
+.rowC .c-ded  { text-align: left;  border-left: 2px solid #999; }
+.rowC .c-dcur { text-align: right; }
+.rowC .c-dytd { text-align: right; }
+
+/* ── DATA ROWS  – NOT bold, thin grey bottom border                      ── */
+.rowD td {
+  background: #fff;
+  font-weight: normal;
+  font-size: 13px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--row-bd-lt);
+  border-right: 1px solid var(--row-bd-lt);
+  vertical-align: top;
+}
+.rowD td:last-child { border-right: none; }
+.rowD .d-ename { text-align: left; }
+.rowD .d-rate  { text-align: right; }
+.rowD .d-hrs   { text-align: right; }
+.rowD .d-curr  { text-align: right; }
+/* divider between earn and ded sides */
+.rowD .d-ytd   { text-align: right; border-right: 1.5px solid var(--row-bd) !important; }
+.rowD .d-dname { text-align: left; }
+.rowD .d-dcur  { text-align: right; }
+.rowD .d-dytd  { text-align: right; }
+/* blank spacer rows */
+.rowD.blank td { height: 31px; vertical-align: middle; }
+
+/* ── ROW E  Total row
+        "Total Earnings"   = dark-grey bg, WHITE BOLD, left-aligned
+        Current / YTD      = light-grey bg, black NOT bold, right-aligned
+        "Total Deductions" = dark-grey bg, WHITE BOLD, left-aligned
+        Current / YTD      = light-grey bg, black NOT bold, right-aligned  ── */
+.rowE td {
+  background: var(--hdr-bg);
+  color: #fff;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 9px 10px;
+  border-top: 1.5px solid var(--outer-bd);
+  border-right: 1px solid var(--hdr-bd);
+}
+.rowE td:last-child { border-right: none; }
+.rowE .e-label  { text-align: left; }
+.rowE .e-dlabel { text-align: left; }
+/* Amount cells – light grey, NOT bold, black text */
+.rowE .e-curr,
+.rowE .e-ytd,
+.rowE .e-dcur,
+.rowE .e-dytd {
+  background: var(--tot-amt);
+  color: #000;
+  font-weight: normal;
+  text-align: right;
+}
+.rowE .e-ytd { border-right: 1.5px solid var(--row-bd) !important; }
+
+/* ══════════════════════════════════════
+   NET PAY TABLE
+   Separate table, right-aligned, below main
+   Left = empty white cell (rowspan 2)
+   "Net Pay" / "YTD Net Pay" = dark-grey bg, WHITE BOLD, right-aligned
+   Amounts = white bg, NOT bold, right-aligned
+   ══════════════════════════════════════ */
+.net-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+.net-table {
+  border-collapse: collapse;
+  border: 1.5px solid var(--outer-bd);
+  width: 42%;
+}
+.net-table td {
+  font-size: 13px;
+  padding: 9px 12px;
+  vertical-align: middle;
+}
+/* Empty white left cell (same width as left portion of main table) */
+.net-table .nt-empty {
+  background: #fff;
+  border-right: 1.5px solid var(--outer-bd);
+  width: 38%;
+}
+/* Label cell – dark grey bg, WHITE BOLD, right-aligned */
+.net-table .nt-label {
+  background: var(--hdr-bg);
+  color: #fff;
+  font-weight: bold;
+  text-align: right;
+  border-bottom: 1px solid var(--hdr-bd);
+  white-space: nowrap;
+  width: 35%;
+}
+/* Amount cell – white bg, NOT bold, right-aligned */
+.net-table .nt-val {
+  background: #fff;
+  color: #000;
+  font-weight: normal;
+  text-align: right;
+  border-bottom: 1px solid var(--row-bd-lt);
+  border-left: 1px solid var(--row-bd-lt);
+  width: 27%;
+}
+.net-table tr:last-child .nt-label { border-bottom: none; }
+.net-table tr:last-child .nt-val   { border-bottom: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  body { padding: 12px; }
+  .main td, .main th { font-size: 11px; padding: 6px 5px !important; }
+  .top-header { flex-direction: column; gap: 10px; }
+  .hdr-right { text-align: left; }
+  .net-table { width: 85%; }
+  .btn { font-size: 11px; padding: 4px 9px; }
+}
+
+@media print {
+  body { padding: 0; }
+  .toolbar { display: none; }
+  [contenteditable]:hover,
+  [contenteditable]:focus { background: transparent !important; box-shadow: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <span class="tip">✏️ Click any field to edit</span>
+  <button class="btn primary" onclick="window.print()">🖨 Print / PDF</button>
+  <button class="btn" onclick="downloadHTML()">⬇ Download HTML</button>
+  <button class="btn" onclick="addEarnRow()">+ Earn Row</button>
+  <button class="btn" onclick="addDedRow()">+ Deduction Row</button>
+  <button class="btn" onclick="if(confirm('Reset all changes?'))location.reload()">↺ Reset</button>
+</div>
+
+<div class="page">
+
+  <!-- ══ TOP HEADER ══ -->
+  <div class="top-header">
+    <div>
+      <span class="co-name" contenteditable="true">Design LLC</span>
+      <span class="co-id"   contenteditable="true">(00-0012345)</span>
+      <span class="co-addr" contenteditable="true">41, Any Street<br>Any Town, CA 94578</span>
+    </div>
+    <div class="hdr-right">
+      <span class="stmt-title" contenteditable="true">Earnings Statement</span>
+      <div class="check-line">Check Number: <strong contenteditable="true">2810</strong></div>
+    </div>
+  </div>
+
+  <!-- ══ MAIN TABLE ══ -->
+  <table class="main">
+    <colgroup>
+      <col style="width:19%"><!-- Earn name -->
+      <col style="width:8%"> <!-- Rate -->
+      <col style="width:7%"> <!-- Hours -->
+      <col style="width:9%"> <!-- Current earn -->
+      <col style="width:8%"> <!-- YTD earn -->
+      <col style="width:23%"><!-- Ded name -->
+      <col style="width:13%"><!-- Current ded -->
+      <col style="width:13%"><!-- YTD ded -->
+    </colgroup>
+
+    <!-- ROW A: Section headers — dark grey, white BOLD -->
+    <tr class="rowA">
+      <td class="a-emp"  colspan="2" contenteditable="true">Employee Information</td>
+      <td class="a-sch"  colspan="2" contenteditable="true">Pay Schedule</td>
+      <td class="a-per"  colspan="2" contenteditable="true">Pay Period</td>
+      <td class="a-date" colspan="2" contenteditable="true">Pay Date</td>
+    </tr>
+
+    <!-- ROW B: Employee + pay info — NOT bold -->
+    <tr class="rowB">
+      <td class="b-emp" colspan="2">
+        <span class="emp-name" contenteditable="true">George Mathew</span>
+        <span class="emp-ssn"  contenteditable="true">(XXX-XX-0909)</span>
+        <span class="emp-addr" contenteditable="true">1839, Echo Lane<br>San Leandro, CA 94578</span>
+      </td>
+      <td class="b-sch"  colspan="2" contenteditable="true">Weekly</td>
+      <td class="b-per"  colspan="2" contenteditable="true">Jan 01, 2023 to Jan 07, 2023</td>
+      <td class="b-date" colspan="2" contenteditable="true">Jan 06, 2023</td>
+    </tr>
+
+    <!-- ROW C: Column headers — dark grey, white BOLD -->
+    <tr class="rowC">
+      <td class="c-earn" contenteditable="true">Earnings</td>
+      <td class="c-rate" contenteditable="true">Rate</td>
+      <td class="c-hrs"  contenteditable="true">Hours</td>
+      <td class="c-curr" contenteditable="true">Current</td>
+      <td class="c-ytd"  contenteditable="true">YTD</td>
+      <td class="c-ded"  contenteditable="true">Deductions</td>
+      <td class="c-dcur" contenteditable="true">Current</td>
+      <td class="c-dytd" contenteditable="true">YTD</td>
+    </tr>
+
+    <!-- DATA ROWS — NOT bold -->
+    <tbody id="data-body">
+      <tr class="rowD">
+        <td class="d-ename" contenteditable="true">Regular Earnings</td>
+        <td class="d-rate"  contenteditable="true">$15.00</td>
+        <td class="d-hrs"   contenteditable="true">40</td>
+        <td class="d-curr"  contenteditable="true">$600.00</td>
+        <td class="d-ytd"   contenteditable="true">$600.00</td>
+        <td class="d-dname" contenteditable="true">Federal</td>
+        <td class="d-dcur"  contenteditable="true">$35.81</td>
+        <td class="d-dytd"  contenteditable="true">$35.81</td>
+      </tr>
+      <tr class="rowD blank">
+        <td class="d-ename"></td><td class="d-rate"></td>
+        <td class="d-hrs"></td><td class="d-curr"></td>
+        <td class="d-ytd"></td>
+        <td class="d-dname" contenteditable="true">Medicare</td>
+        <td class="d-dcur"  contenteditable="true">$8.70</td>
+        <td class="d-dytd"  contenteditable="true">$8.70</td>
+      </tr>
+      <tr class="rowD blank">
+        <td class="d-ename"></td><td class="d-rate"></td>
+        <td class="d-hrs"></td><td class="d-curr"></td>
+        <td class="d-ytd"></td>
+        <td class="d-dname" contenteditable="true">FICA</td>
+        <td class="d-dcur"  contenteditable="true">$37.20</td>
+        <td class="d-dytd"  contenteditable="true">$37.20</td>
+      </tr>
+      <tr class="rowD blank">
+        <td class="d-ename"></td><td class="d-rate"></td>
+        <td class="d-hrs"></td><td class="d-curr"></td>
+        <td class="d-ytd"></td>
+        <td class="d-dname" contenteditable="true">CA State</td>
+        <td class="d-dcur"  contenteditable="true">$9.73</td>
+        <td class="d-dytd"  contenteditable="true">$9.73</td>
+      </tr>
+      <tr class="rowD blank">
+        <td class="d-ename"></td><td class="d-rate"></td>
+        <td class="d-hrs"></td><td class="d-curr"></td>
+        <td class="d-ytd"></td>
+        <td class="d-dname" contenteditable="true">CA SDI</td>
+        <td class="d-dcur"  contenteditable="true">$5.40</td>
+        <td class="d-dytd"  contenteditable="true">$5.40</td>
+      </tr>
+    </tbody>
+
+    <!-- ROW E: Total row — dark grey labels BOLD white, amounts light grey NOT bold -->
+    <tr class="rowE">
+      <td class="e-label"  colspan="3" contenteditable="true">Total Earnings</td>
+      <td class="e-curr"               contenteditable="true">$600.00</td>
+      <td class="e-ytd"                contenteditable="true">$600.00</td>
+      <td class="e-dlabel"             contenteditable="true">Total Deductions</td>
+      <td class="e-dcur"               contenteditable="true">$96.84</td>
+      <td class="e-dytd"               contenteditable="true">$96.84</td>
+    </tr>
+
+  </table>
+
+  <!-- ══ NET PAY TABLE — separate, right-aligned ══ -->
+  <div class="net-wrap">
+    <table class="net-table">
+      <tr>
+        <td class="nt-empty" rowspan="2" contenteditable="true"></td>
+        <td class="nt-label" contenteditable="true">Net Pay</td>
+        <td class="nt-val"   contenteditable="true">$503.16</td>
+      </tr>
+      <tr>
+        <td class="nt-label" contenteditable="true">YTD Net Pay</td>
+        <td class="nt-val"   contenteditable="true">$503.16</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<script>
+  function addEarnRow() {
+    const body = document.getElementById('data-body');
+    const tr = document.createElement('tr');
+    tr.className = 'rowD';
+    tr.innerHTML = `
+      <td class="d-ename" contenteditable="true">New Earning</td>
+      <td class="d-rate"  contenteditable="true">$0.00</td>
+      <td class="d-hrs"   contenteditable="true">0</td>
+      <td class="d-curr"  contenteditable="true">$0.00</td>
+      <td class="d-ytd"   contenteditable="true">$0.00</td>
+      <td class="d-dname" contenteditable="true"></td>
+      <td class="d-dcur"  contenteditable="true"></td>
+      <td class="d-dytd"  contenteditable="true"></td>`;
+    body.appendChild(tr);
+  }
+
+  function addDedRow() {
+    const body = document.getElementById('data-body');
+    const tr = document.createElement('tr');
+    tr.className = 'rowD blank';
+    tr.innerHTML = `
+      <td class="d-ename"></td><td class="d-rate"></td>
+      <td class="d-hrs"></td><td class="d-curr"></td>
+      <td class="d-ytd"></td>
+      <td class="d-dname" contenteditable="true">New Deduction</td>
+      <td class="d-dcur"  contenteditable="true">$0.00</td>
+      <td class="d-dytd"  contenteditable="true">$0.00</td>`;
+    body.appendChild(tr);
+  }
+
+  function downloadHTML() {
+    const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+    const blob = new Blob([html], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'paystub_bw_editable.html';
+    a.click();
+  }
+</script>
+</body>
+</html>
