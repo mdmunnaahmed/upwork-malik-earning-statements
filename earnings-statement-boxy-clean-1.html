@@ -41,7 +41,7 @@ frame-ancestors 'none';
       --lrow-bg: #dfdfdf;
       --lrow-border: #b8b8b8;
       --inp-border: #aaa;
-      --text-dark: #111;
+      --text-dark: #000;
       --text-mid: #555;
       --placeholder: #999;
       --blue: #4a7fa0;
@@ -419,7 +419,7 @@ frame-ancestors 'none';
       background-repeat: no-repeat;
       background-color: #fff;
       text-align: right;
-      color: #fff;
+      color: var(--text-dark);
       padding-right: 10px;
       font-size: 18px;
       position: relative;
@@ -448,6 +448,7 @@ frame-ancestors 'none';
     .regular .row6,
     .regular .row8 {
       background-color: var(--lrow-bg);
+      color: var(--text-dark);
       height: 26px;
       font-size: 13px;
       font-weight: 700;
