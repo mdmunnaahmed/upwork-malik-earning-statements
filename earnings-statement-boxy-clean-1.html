@@ -428,7 +428,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, #969d9f 0%, #646665 100%);
+      background: linear-gradient(180deg, #909597 0%, #4e4e4e 100%);
       clip-path: polygon(0px 0%, 100% 0%, 100% 100%, 18% 100%);
       right: -1px;
       z-index: -1;
@@ -515,7 +515,7 @@
       width: 494px;
       text-align: left;
       padding-left: 10px;
-      border-left: 1px solid #dfdfdf
+      /* border-left: 1px solid #dfdfdf */
     }
 
     .enhanced .row4.col2,
@@ -523,7 +523,7 @@
     .regular .row4.col2,
     .regular .row5.col2 {
       width: 168px;
-      border-left: 1px solid #dfdfdf;
+      /* border-left: 1px solid #dfdfdf; */
       text-align: center
     }
 
@@ -536,7 +536,7 @@
     .regular .row5.col3,
     .regular .row5.col4 {
       width: 167px;
-      border-left: 1px solid #dfdfdf;
+      /* border-left: 1px solid #dfdfdf; */
       text-align: center
     }
 
@@ -554,28 +554,28 @@
     .regular .row7.col2 {
       width: 296px;
       text-align: center;
-      border-left: 1px solid #dfdfdf
+      /* border-left: 1px solid #dfdfdf */
     }
 
     .regular .row6.col3,
     .regular .row7.col3 {
       width: 129px;
       text-align: center;
-      border-left: 1px solid #dfdfdf
+      /* border-left: 1px solid #dfdfdf */
     }
 
     .regular .row6.col4,
     .regular .row7.col4 {
       width: 94px;
       text-align: center;
-      border-left: 1px solid #dfdfdf
+      /* border-left: 1px solid #dfdfdf */
     }
 
     .regular .row6.col5,
     .regular .row7.col5 {
       width: 110px;
       text-align: center;
-      border-left: 1px solid #dfdfdf
+      /* border-left: 1px solid #dfdfdf */
     }
 
     .regular .row10.col1,
@@ -619,7 +619,7 @@
     .regular .row9.col5 {
       width: 120px;
       text-align: left;
-      border-left: 1px solid #dfdfdf;
+      /* border-left: 1px solid #dfdfdf; */
       padding-left: 10px
     }
 
@@ -674,14 +674,14 @@
     .regular .row14.col2 {
       width: 130px;
       text-align: center;
-      border-left: 1px solid #dfdfdf
+      /* border-left: 1px solid #dfdfdf */
     }
 
     .regular .row13.col3,
     .regular .row14.col3 {
       width: 128px;
       text-align: center;
-      border-left: 1px solid #dfdfdf
+      /* border-left: 1px solid #dfdfdf */
     }
 
     .regular .row13.col4,
@@ -692,7 +692,7 @@
     .regular .row14.col6 {
       width: 126px;
       text-align: center;
-      border-left: 1px solid #dfdfdf
+      /* border-left: 1px solid #dfdfdf */
     }
 
     .stub input[type="text"] {
@@ -920,14 +920,14 @@
     .enhanced .row9.col3 {
       width: 184px;
       text-align: center;
-      border-left: 1px solid #dfdfdf
+      /* border-left: 1px solid #dfdfdf */
     }
 
     .enhanced .row8.col4,
     .enhanced .row9.col4 {
       width: 150px;
       text-align: center;
-      border-left: 1px solid #dfdfdf
+      /* border-left: 1px solid #dfdfdf */
     }
 
     .enhanced .row10.col1,
@@ -1007,7 +1007,7 @@
     .enhanced .row18.col6 {
       width: 148px;
       padding-left: 10px;
-      border-left: 1px solid #dfdfdf
+      /* border-left: 1px solid #dfdfdf */
     }
 
     .enhanced .row10.col7,
@@ -2019,6 +2019,8 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
 <body>
@@ -2241,8 +2243,8 @@
                           <td class="row12 col3"></td>
                           <td class="row12 col4"></td>
                           <td class="row12 col5">STATE TAX</td>
-                          <td class="row12 col6"><input type="text" name="state_tax_total" id="state_tax_total" value="30.00"
-                              class="border black size60 right"></td>
+                          <td class="row12 col6"><input type="text" name="state_tax_total" id="state_tax_total"
+                              value="30.00" class="border black size60 right"></td>
                           <td class="row12 col7"><input type="text" name="state_tax_ytd_total" id="state_tax_ytd_total"
                               value="300.00" class="border black size60 right"></td>
                         </tr>
@@ -2268,8 +2270,8 @@
                         <tr>
                           <td class="row14 col1"><input type="text" id="ytd_gross" value="6000.00" name="ytd_gross"
                               class="border black size100 center"></td>
-                          <td class="row14 col2"><input type="text" id="ytd_deductions" value="1510.00" name="ytd_deductions"
-                              class="border black size100 center"></td>
+                          <td class="row14 col2"><input type="text" id="ytd_deductions" value="1510.00"
+                              name="ytd_deductions" class="border black size100 center"></td>
                           <td class="row14 col3"><input type="text" id="ytd_net_pay" value="4490.00" name="ytd_net_pay"
                               class="border black size100 center"></td>
                           <td class="row14 col4"><input type="text" id="total" value="600.00" name="total"
@@ -2341,6 +2343,13 @@
       window.addEventListener('resize', fit, { passive: true });
       window.addEventListener('orientationchange', function () { requestAnimationFrame(fit); });
     })();
+  </script>
+
+  <script>
+
+    flatpickr(".date-picker", {
+      dateFormat: "m/d/Y"
+    });
   </script>
 </body>
 
