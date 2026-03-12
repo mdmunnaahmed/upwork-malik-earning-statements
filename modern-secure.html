@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earnings Statement – Editable</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #e8e6e1;
+      font-family: 'IBM Plex Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 100vh;
+      padding: 30px 20px 60px;
+    }
+
+    /* ── TOOLBAR ── */
+    .toolbar {
+      width: 860px;
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: #555;
+      margin-right: 4px;
+    }
+
+    .btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 16px;
+      border: 2px solid #000;
+      background: #fff;
+      color: #000;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    .btn.primary {
+      background: #000;
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      background: #333;
+    }
+
+    .edit-hint {
+      font-size: 12px;
+      color: #777;
+      font-style: italic;
+      margin-left: auto;
+    }
+
+    /* ── PAGE ── */
+    .page {
+      background: #fff;
+      width: 900px;
+      padding: 40px 44px;
+      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    /* ── EDITABLE ── */
+    [contenteditable="true"] {
+      outline: none;
+      /* border-radius: 2px; */
+      transition: background 0.15s, box-shadow 0.15s;
+      cursor: text;
+    }
+
+    [contenteditable="true"]:hover {
+      background: rgba(0, 0, 0, 0.04);
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08);
+    }
+
+    [contenteditable="true"]:focus {
+      background: #fffde7;
+      box-shadow: 0 0 0 2px #f0c000;
+    }
+
+    /* white fields (black bg cells) */
+    .white-edit[contenteditable="true"]:hover {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+    }
+
+    .white-edit[contenteditable="true"]:focus {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 0 2px #f0c000;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .company-name {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 700;
+      font-size: 18px;
+      color: #000;
+      letter-spacing: -0.3px;
+      display: block;
+    }
+
+    .company-id {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      font-style: italic;
+      color: #444;
+      margin-top: 1px;
+      display: block;
+    }
+
+    .company-address {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.4;
+      margin-top: 6px;
+      display: block;
+    }
+
+    .statement-info {
+      text-align: right;
+    }
+
+    .statement-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 700;
+      font-size: 16px;
+      color: #000;
+      letter-spacing: 0.5px;
+      display: block;
+    }
+
+    .check-line {
+      font-size: 13px;
+      color: #444;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+    }
+
+    .check-label {
+      font-weight: 400;
+      color: #444;
+      white-space: nowrap;
+    }
+
+    .check-number {
+      font-weight: 700;
+      color: #000;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      min-width: 40px;
+      display: inline-block;
+    }
+
+    /* ── INFO BOX ── */
+    .info-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 24px;
+      gap: 12px;
+    }
+    
+    .info-left,
+    .info-right {
+      background: #f4f4f4;
+      border-left: 10px solid #000;
+      padding: 16px 20px;
+    }
+
+    /* .info-left {
+      border-right: 1px solid #ddd;
+    } */
+
+    .employee-name {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 700;
+      font-size: 15px;
+      color: #000;
+      display: block;
+    }
+
+    .employee-ssn {
+      font-size: 12.5px;
+      font-style: italic;
+      color: #555;
+      margin-top: 2px;
+      display: block;
+    }
+
+    .employee-address {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.4;
+      margin-top: 10px;
+      display: block;
+    }
+
+    .pay-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 0;
+    }
+
+    .pay-label {
+      font-size: 11px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+    }
+
+    .pay-value {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+      font-size: 13px;
+      color: #000;
+      display: block;
+    }
+
+    .pay-period {
+      margin-top: 12px;
+      grid-column: 1 / -1;
+    }
+
+    /* ── TABLES ── */
+    .tables-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    thead tr {
+      background: #000;
+      color: #fff;
+    }
+
+    thead th {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.4px;
+      padding: 9px 10px;
+      text-align: left;
+    }
+
+    thead th.right {
+      text-align: right;
+    }
+
+    thead th.center {
+      text-align: center;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    tbody td {
+      padding: 8px 10px;
+      color: #222;
+    }
+
+    tbody td.right {
+      text-align: right;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    tbody td.center {
+      text-align: center;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    tbody td.mono {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* ── SUMMARY ── */
+    .summary-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .summary-table table {
+      border: 1px solid #ddd;
+    }
+
+    .summary-table tbody td {
+      padding: 8px 12px;
+    }
+
+    .summary-table tbody td:last-child {
+      text-align: right;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+    }
+
+    .summary-table tbody tr.bold td {
+      font-weight: 700;
+      color: #000;
+    }
+
+    .net-pay-row td {
+      background: #000 !important;
+      color: #fff !important;
+      font-weight: 700 !important;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 2px solid #000;
+      margin: 22px 0;
+    }
+
+    /* ── ADD/REMOVE ROW BUTTONS ── */
+    .row-actions {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .row-btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      padding: 3px 10px;
+      border: 1px solid #aaa;
+      background: #f9f9f9;
+      color: #333;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .row-btn:hover {
+      border-color: #000;
+      background: #000;
+      color: #fff;
+    }
+
+    /* print */
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      .toolbar,
+      .row-actions {
+        display: none !important;
+      }
+
+      .page {
+        box-shadow: none;
+      }
+
+      [contenteditable="true"]:hover,
+      [contenteditable="true"]:focus {
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <span class="toolbar-label">✏️ Click any field to edit &nbsp;|</span>
+    <button class="btn primary" onclick="window.print()">🖨 Print / Save PDF</button>
+    <button class="btn" onclick="downloadHTML()">⬇ Download HTML</button>
+    <button class="btn" onclick="resetAll()">↺ Reset</button>
+    <span class="edit-hint">All fields are editable</span>
+  </div>
+
+  <!-- PAGE -->
+  <div class="page" id="page">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div>
+        <span class="company-name" contenteditable="true">Design LLC</span>
+        <span class="company-id" contenteditable="true">(00-0012345)</span>
+        <span class="company-address" contenteditable="true">41, Any Street<br>Any Town, CA 94578</span>
+      </div>
+      <div class="statement-info">
+        <span class="statement-title" contenteditable="true">Earnings Statement</span>
+        <div class="check-line">
+          <span class="check-label">Check Number:</span>
+          <span class="check-number" contenteditable="true">2810</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFO BOX -->
+    <div class="info-box">
+      <div class="info-left">
+        <span class="employee-name" contenteditable="true">George Mathew</span>
+        <span class="employee-ssn" contenteditable="true">(XXX-XX-0909)</span>
+        <span class="employee-address" contenteditable="true">1839, Echo Lane<br>San Leandro, CA 94578</span>
+      </div>
+      <div class="info-right">
+        <div class="pay-grid">
+          <div>
+            <div class="pay-label">Pay Date</div>
+            <span class="pay-value" contenteditable="true">Jan 06, 2023</span>
+          </div>
+          <div>
+            <div class="pay-label">Pay Schedule</div>
+            <span class="pay-value" contenteditable="true">Weekly</span>
+          </div>
+          <div class="pay-period">
+            <div class="pay-label">Pay Period</div>
+            <span class="pay-value" contenteditable="true">Jan 01, 2023 to Jan 07, 2023</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EARNINGS + TAXES TABLES -->
+    <div class="tables-row">
+      <!-- EARNINGS -->
+      <div>
+        <table id="earnings-table">
+          <thead>
+            <tr>
+              <th contenteditable="true">Earnings</th>
+              <th class="right" contenteditable="true">Rate</th>
+              <th class="center" contenteditable="true">Hours</th>
+              <th class="right" contenteditable="true">Total</th>
+              <th class="right" contenteditable="true">YTD</th>
+            </tr>
+          </thead>
+          <tbody id="earnings-body">
+            <tr>
+              <td contenteditable="true" style="white-space: nowrap;">Regular Earnings</td>
+              <td class="center mono" contenteditable="true">$15.00</td>
+              <td class="center mono" contenteditable="true">40</td>
+              <td class="right" contenteditable="true">$600.00</td>
+              <td class="right" contenteditable="true">$600.00</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row-actions">
+          <button class="row-btn" onclick="addRow('earnings-body', 5)">+ Add Row</button>
+          <button class="row-btn" onclick="removeRow('earnings-body')">− Remove Row</button>
+        </div>
+      </div>
+
+      <!-- TAXES -->
+      <div>
+        <table id="taxes-table">
+          <thead>
+            <tr>
+              <th contenteditable="true">Taxes / Deductions</th>
+              <th class="right" contenteditable="true">Current</th>
+              <th class="right" contenteditable="true">YTD</th>
+            </tr>
+          </thead>
+          <tbody id="taxes-body">
+            <tr>
+              <td contenteditable="true">Federal</td>
+              <td class="right" contenteditable="true">$35.81</td>
+              <td class="right" contenteditable="true">$35.81</td>
+            </tr>
+            <tr>
+              <td contenteditable="true">Medicare</td>
+              <td class="right" contenteditable="true">$8.70</td>
+              <td class="right" contenteditable="true">$8.70</td>
+            </tr>
+            <tr>
+              <td contenteditable="true">FICA</td>
+              <td class="right" contenteditable="true">$37.20</td>
+              <td class="right" contenteditable="true">$37.20</td>
+            </tr>
+            <tr>
+              <td contenteditable="true">CA State</td>
+              <td class="right" contenteditable="true">$9.73</td>
+              <td class="right" contenteditable="true">$9.73</td>
+            </tr>
+            <tr>
+              <td contenteditable="true">CA SDI</td>
+              <td class="right" contenteditable="true">$5.40</td>
+              <td class="right" contenteditable="true">$5.40</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row-actions">
+          <button class="row-btn" onclick="addRow('taxes-body', 3)">+ Add Row</button>
+          <button class="row-btn" onclick="removeRow('taxes-body')">− Remove Row</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- <hr class="divider"> -->
+
+    <!-- SUMMARY -->
+    <div class="summary-row">
+      <div class="summary-table">
+        <table>
+          <tbody id="ytd-body">
+            <tr>
+              <td contenteditable="true">YTD Gross</td>
+              <td contenteditable="true">$600.00</td>
+            </tr>
+            <tr class="bold">
+              <td contenteditable="true">YTD Taxes / Deductions</td>
+              <td contenteditable="true">$96.84</td>
+            </tr>
+            <tr>
+              <td contenteditable="true">YTD Net Pay</td>
+              <td contenteditable="true">$503.16</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="summary-table">
+        <table>
+          <tbody id="net-body">
+            <tr>
+              <td contenteditable="true">Gross</td>
+              <td contenteditable="true">$600.00</td>
+            </tr>
+            <tr class="bold">
+              <td contenteditable="true">Taxes / Deductions</td>
+              <td contenteditable="true">$96.84</td>
+            </tr>
+            <tr class="net-pay-row">
+              <td class="white-edit" contenteditable="true">Net Pay</td>
+              <td class="white-edit" contenteditable="true">$503.16</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /page -->
+
+  <script>
+    // Add a blank row to a table body
+    function addRow(tbodyId, cols) {
+      const tbody = document.getElementById(tbodyId);
+      const tr = document.createElement('tr');
+      for (let i = 0; i < cols; i++) {
+        const td = document.createElement('td');
+        td.contentEditable = 'true';
+        if (i > 0 && cols === 5) td.className = i === 1 || i === 2 ? 'center mono' : 'right';
+        if (i > 0 && cols === 3) td.className = 'right';
+        td.textContent = i === 0 ? 'New Item' : '$0.00';
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    }
+
+    // Remove last row (keep at least 1)
+    function removeRow(tbodyId) {
+      const tbody = document.getElementById(tbodyId);
+      if (tbody.rows.length > 1) tbody.deleteRow(tbody.rows.length - 1);
+    }
+
+    // Download current HTML state
+    function downloadHTML() {
+      const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], { type: 'text/html' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'earnings_statement.html';
+      a.click();
+    }
+
+    // Reset to original (reload)
+    function resetAll() {
+      if (confirm('Reset all changes to original values?')) location.reload();
+    }
+  </script>
+</body>
+
+</html>
