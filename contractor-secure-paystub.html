@@ -72,10 +72,10 @@
       cursor: text;
     }
 
-    [contenteditable]:hover {
+    /* [contenteditable]:hover {
       background: rgba(0, 0, 0, 0.05);
       border-radius: 2px;
-    }
+    } */
 
     [contenteditable]:focus {
       background: #fffbe5;
@@ -97,7 +97,7 @@
       text-align: center;
       font-size: 20px;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 18px;
       letter-spacing: 0.2px;
     }
 
@@ -110,10 +110,11 @@
    - Padding inside
    ══════════════════════════════════════ */
     .info-box {
-      border: 1px solid #555;
+      border: 2px solid #111;
       display: flex;
+      align-items: center;
       padding: 12px 16px 14px 16px;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
       gap: 0;
     }
 
@@ -149,7 +150,7 @@
       font-weight: normal;
       display: block;
       margin-top: 10px;
-      line-height: 1.6;
+      line-height: 1.4;
     }
 
     /* James R Cook — bold */
@@ -174,7 +175,7 @@
       font-weight: normal;
       display: block;
       margin-top: 10px;
-      line-height: 1.6;
+      line-height: 1.4;
     }
 
     /* ══════════════════════════════════════
@@ -183,9 +184,9 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
       font-size: 13px;
-      border: 1px solid #555;
+      border: 2px solid #111;
     }
 
     td {
@@ -201,8 +202,8 @@
       color: #fff;
       font-weight: bold;
       font-size: 13px;
-      padding: 6px 10px;
-      border-right: 1px solid #2a2a2a;
+      padding: 8px 10px;
+      /* border-right: 1px solid #2a2a2a; */
       vertical-align: middle;
     }
 
@@ -215,9 +216,9 @@
       background: #fff;
       font-weight: normal;
       font-size: 13px;
-      padding: 6px 10px;
-      border-bottom: 1px solid #d0d0d0;
-      border-right: 1px solid #d0d0d0;
+      padding: 8px 10px;
+      border-bottom: 2px solid #111;
+      border-right: 2px solid #111;
       vertical-align: middle;
     }
 
@@ -234,10 +235,10 @@
       background: #fff;
       font-weight: bold;
       font-size: 13px;
-      padding: 6px 10px;
-      border-top: 1.5px solid #444;
-      border-bottom: 1.5px solid #444;
-      border-right: 1px solid #d0d0d0;
+      padding: 8px 10px;
+      border-top: 2px solid #111;
+      border-bottom: 2px solid #111;
+      border-right: 2px solid #111;
       vertical-align: middle;
     }
 
@@ -432,7 +433,7 @@
 
     .net-tbl {
       border-collapse: collapse;
-      border: 1.5px solid #333;
+      border: 2px solid #111;
       width: 36%;
     }
 
@@ -450,8 +451,8 @@
       font-weight: bold;
       text-align: left;
       width: 55%;
-      border-bottom: 1px solid #2a2a2a;
-      border-right: 1px solid #2a2a2a;
+      border-bottom: 2px solid #fff;
+      border-left: 2px solid #111;
     }
 
     /* White value — RIGHT-aligned, black bold */
@@ -461,7 +462,7 @@
       font-weight: bold;
       text-align: right;
       width: 45%;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 2px solid #111;
     }
 
     .net-tbl tr:last-child .nl {
@@ -471,6 +472,14 @@
     .net-tbl tr:last-child .nv {
       border-bottom: none;
     }
+
+    .blk td[contenteditable="true"]:focus {
+      color: #111;
+    }
+
+    /* .blk td[contenteditable="true"]:hover {
+      color: #111;
+    } */
 
     /* ── RESPONSIVE ── */
     @media (max-width: 680px) {
@@ -517,11 +526,11 @@
         display: none;
       }
 
-      [contenteditable]:hover,
+      /* [contenteditable]:hover,
       [contenteditable]:focus {
         background: transparent !important;
         box-shadow: none !important;
-      }
+      } */
     }
   </style>
 </head>
